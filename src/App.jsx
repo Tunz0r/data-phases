@@ -35,6 +35,7 @@ const PHASE_DETAILS = [
           { icon: 'no', text: 'Cannot combine data across departments' },
         ],
         tools: ['Excel', 'Email', 'SharePoint'],
+        maturity: { access: 1, governance: 1, ai: 1, value: 1 },
       },
       {
         desc: 'Wants to build data-driven solutions but ends up creating shadow IT. No shared platform or data products to build on.',
@@ -46,6 +47,7 @@ const PHASE_DETAILS = [
           { icon: 'no', text: 'Cannot operationalise models \u2014 relies on IT for deployment' },
         ],
         tools: ['Excel', 'Local Python', 'Shadow IT tools'],
+        maturity: { access: 1.5, governance: 1, ai: 1, value: 1 },
       },
       {
         desc: 'Builds applications that need data, but must integrate with fragmented sources. No unified data layer to consume from.',
@@ -57,6 +59,7 @@ const PHASE_DETAILS = [
           { icon: 'partial', text: 'Builds own data transformation logic per project' },
         ],
         tools: ['Custom APIs', 'Direct DB queries', 'FTP transfers'],
+        maturity: { access: 1.5, governance: 1, ai: 1, value: 1.5 },
       },
       {
         desc: 'Maintains separate platforms across teams. Data engineers duplicate pipelines. ML engineers lack shared infrastructure.',
@@ -68,6 +71,7 @@ const PHASE_DETAILS = [
           { icon: 'no', text: 'No standardised deployment or monitoring of ML models' },
         ],
         tools: ['Multiple clouds', 'Team-specific DBs', 'Ad-hoc notebooks'],
+        maturity: { access: 2, governance: 1, ai: 2, value: 1 },
       },
     ],
   },
@@ -87,6 +91,7 @@ const PHASE_DETAILS = [
           { icon: 'partial', text: 'Cross-department data combining possible for priority domains' },
         ],
         tools: ['Power BI', 'Excel', 'Data Catalogue'],
+        maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
       },
       {
         desc: 'Can now access shared data and initial AI tooling. Databricks notebooks available for prototyping. Governance gives guardrails.',
@@ -98,6 +103,7 @@ const PHASE_DETAILS = [
           { icon: 'no', text: 'Still limited ability to deploy to production autonomously' },
         ],
         tools: ['Databricks', 'Power BI', 'CoPilot'],
+        maturity: { access: 2.5, governance: 2, ai: 2, value: 1.5 },
       },
       {
         desc: 'Shared data layer forming. Can integrate with curated data products from the platform instead of point-to-point connections.',
@@ -109,6 +115,7 @@ const PHASE_DETAILS = [
           { icon: 'partial', text: 'Reducing point-to-point integrations, some legacy remains' },
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Power BI'],
+        maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
       },
       {
         desc: 'Migrating to shared Databricks platform. ML platform consolidating. Hub team providing core infrastructure and engineering support.',
@@ -120,6 +127,7 @@ const PHASE_DETAILS = [
           { icon: 'yes', text: 'Hub team providing advisory and engineering support to spokes' },
         ],
         tools: ['Databricks', 'ML Platform', 'CI/CD Pipelines', 'Adobe CDP'],
+        maturity: { access: 3, governance: 2.5, ai: 2.5, value: 2 },
       },
     ],
   },
@@ -140,6 +148,7 @@ const PHASE_DETAILS = [
         ],
         tools: ['Power BI', 'Excel', 'CoPilot', 'Data Catalogue'],
         spoke: 'Spoke "lille" \u2014 consumes governed data products',
+        maturity: { access: 3.5, governance: 3, ai: 3, value: 3 },
       },
       {
         desc: 'Builds data products and AI solutions on the shared platform within governed sandbox. Can prototype and deploy within guardrails.',
@@ -152,6 +161,7 @@ const PHASE_DETAILS = [
         ],
         tools: ['Databricks', 'AI Platform', 'CoPilot', 'Adobe Experience Platform'],
         spoke: 'Spoke "mellem" \u2014 builds within governed framework',
+        maturity: { access: 3.5, governance: 3, ai: 3.5, value: 3 },
       },
       {
         desc: 'Consumes curated data products and customer data via governed APIs. Real-time data from Adobe Experience Platform fuels applications.',
@@ -164,6 +174,7 @@ const PHASE_DETAILS = [
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Event Streaming'],
         spoke: 'Spoke "lille/mellem" \u2014 integrates governed data products',
+        maturity: { access: 3.5, governance: 3, ai: 3, value: 3.5 },
       },
       {
         desc: 'Owns and operates the platform, ML models, and data products. You-build-it-you-run-it within clear governance. Drives capability for all spokes.',
@@ -176,6 +187,7 @@ const PHASE_DETAILS = [
         ],
         tools: ['Databricks Unity Catalog', 'ML Platform', 'Adobe CDP', 'Governance Tooling'],
         spoke: 'Spoke "stor" + Hub \u2014 owns platform, governs all',
+        maturity: { access: 4, governance: 3.5, ai: 4, value: 3 },
       },
     ],
   },
@@ -274,6 +286,27 @@ function ChaosLines({ positions }) {
 // CAPABILITY CARD
 // ────────────────────────────────────────────
 
+const MATURITY_DIMS = [
+  { key: 'access', label: 'Data Access' },
+  { key: 'governance', label: 'Governance' },
+  { key: 'ai', label: 'AI & Analytics' },
+  { key: 'value', label: 'Value Realisation' },
+]
+
+function MaturityBar({ value, max = 5, color }) {
+  const pct = (value / max) * 100
+  const barColor = value <= 1.5 ? 'var(--accent-red)' : value <= 2.5 ? 'var(--accent-amber)' : color || 'var(--accent-green)'
+  return (
+    <div className="maturity-bar-track">
+      <div className="maturity-bar-fill" style={{ width: `${pct}%`, background: barColor }} />
+      {/* Level markers */}
+      {[1, 2, 3, 4].map(n => (
+        <div key={n} className="maturity-bar-marker" style={{ left: `${(n / max) * 100}%` }} />
+      ))}
+    </div>
+  )
+}
+
 function PersonaCard({ persona, detail, colorIndex }) {
   const iconMap = { yes: '\u2713', no: '\u2717', partial: '\u25CB' }
   const classMap = { yes: 'cap-yes', no: 'cap-no', partial: 'cap-partial' }
@@ -291,6 +324,17 @@ function PersonaCard({ persona, detail, colorIndex }) {
       {detail.spoke && (
         <div style={{ fontSize: 11, fontWeight: 600, color: persona.color, marginBottom: 10 }}>
           {detail.spoke}
+        </div>
+      )}
+      {detail.maturity && (
+        <div className="maturity-section">
+          {MATURITY_DIMS.map(dim => (
+            <div key={dim.key} className="maturity-row">
+              <span className="maturity-label">{dim.label}</span>
+              <MaturityBar value={detail.maturity[dim.key]} color={persona.color} />
+              <span className="maturity-value">{detail.maturity[dim.key]}</span>
+            </div>
+          ))}
         </div>
       )}
       <ul className="capability-list">
