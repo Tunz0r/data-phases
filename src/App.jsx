@@ -270,6 +270,115 @@ const PHASE_DETAILS = [
 ]
 
 // ────────────────────────────────────────────
+// GLOSSARY
+// ────────────────────────────────────────────
+
+const GLOSSARY = [
+  {
+    term: 'Hub',
+    short: 'Central data & AI team',
+    detail: 'The central Data Foundation team that owns and operates the shared data platform, AI platform, and governance framework. Provides core services to all spokes: advisory, engineering support, enablement, and platform operations. The Hub does not own the data itself \u2014 it owns the infrastructure, tooling, and standards that make data usable across TV 2.',
+  },
+  {
+    term: 'Spoke',
+    short: 'Domain team consuming Hub services',
+    detail: 'A team or domain that consumes services from the Hub. Spokes range from "lille" (consumes governed data products via self-service tools) through "mellem" (builds data products and ML models within governed framework) to "stor" (owns local tech stack and ML models with you-build-it-you-run-it responsibility). Each spoke has a defined archetype with clear mandate, responsibilities, and technical ownership.',
+  },
+  {
+    term: 'Data Platform',
+    short: 'Shared infrastructure for data storage, processing & serving',
+    detail: 'The shared technical foundation (Databricks) for ingesting, storing, modelling, and serving data across TV 2. Provides lakehouse architecture, Unity Catalog for governance, feature store, and ML platform capabilities. The data platform is explicitly NOT an integration platform \u2014 it does not replace or replicate point-to-point system integrations. Its purpose is to make data available as governed data products for analytics, AI, and decision-making.',
+  },
+  {
+    term: 'Integration Platform',
+    short: 'System-to-system connectivity (separate from Data Platform)',
+    detail: 'The infrastructure for real-time, operational system-to-system integrations (APIs, event streaming, ETL between operational systems). This is architecturally distinct from the Data Platform. The Data Platform consumes data from source systems \u2014 it does not become the integration layer between them. If system A needs to send data to system B in real-time for operational purposes, that is an integration concern, not a data platform concern. Conflating the two leads to the Data Platform becoming a bottleneck for operational flows it was never designed to handle.',
+  },
+  {
+    term: 'Master Data Model',
+    short: 'Shared definitions for key business entities',
+    detail: 'A common, organisation-wide model defining key business entities and their relationships: Kunde (customer), Forbruger (consumer/identity), Indhold (content), Produkt (product), Abonnement (subscription), and others. Establishes one shared language so that "customer" means the same thing in every report, dashboard, and AI model across TV 2. Owned by designated business data owners, enforced via the data platform.',
+  },
+  {
+    term: 'Common Ontology',
+    short: 'Shared language and taxonomy across TV 2',
+    detail: 'The broader shared vocabulary and classification system that goes beyond master data. Includes agreed definitions, measures, KPIs, and business terms used consistently across departments. Without a common ontology, each team defines metrics differently \u2014 leading to conflicting reports and eroded trust in data. The ontology is the semantic layer that makes data comparable and combinable.',
+  },
+  {
+    term: 'Data Governance',
+    short: 'Ownership, quality, and accountability for data',
+    detail: 'The framework of policies, roles, and processes that ensures data is managed as a strategic corporate asset. Includes business ownership of data domains, data quality standards, access control, lineage tracking, and compliance. Governed through dedicated boards and forums at strategic, tactical, and operational levels. Not just a Teknologi concern \u2014 business ownership of shared data is a core principle.',
+  },
+  {
+    term: 'AI Governance',
+    short: 'Risk framework and guardrails for AI usage',
+    detail: 'The framework for responsible AI adoption across TV 2. Includes the AI forum (strategic direction), AI risk group (risk assessment for "gule felt" use cases), and AI technology governance (model and tool approval). Defines clear zones: "sikre zoner" where AI use is encouraged, "risikable zoner" requiring case-by-case assessment, and "no-go zoner" (e.g., GenAI in news production). Ensures AI creates value without compromising TV 2\u2019s troværdighed.',
+  },
+  {
+    term: 'Sikre Zoner',
+    short: 'Safe zones for AI \u2014 encouraged usage',
+    detail: 'Areas where AI can be used freely within general guidelines: internal efficiency, administrative automation, AI-assisted search, CoPilot for daily work, internal tool building. Non-customer-facing, low-risk applications. The Everyday AI Builder operates primarily in this zone. No case-by-case approval needed \u2014 just follow the published AI guidelines.',
+  },
+  {
+    term: 'Self-Service',
+    short: 'Teams access data independently via governed tools',
+    detail: 'The ability for non-technical teams to access, explore, and analyse data without depending on IT or the Data Foundation team. Enabled through tools like Power BI, Excel (connected to governed data), and data catalogues. Self-service does not mean ungoverned \u2014 teams work within the shared data model and access controls. The goal is autonomy within guardrails.',
+  },
+  {
+    term: 'Data Product',
+    short: 'A curated, governed, reusable dataset',
+    detail: 'A packaged, well-documented, quality-assured dataset exposed for consumption. Has clear ownership, SLAs, schema documentation, and lineage. Consumed via the data platform (Databricks) or APIs. Data products are the primary interface between the Hub and spokes \u2014 spokes consume data products rather than querying raw source systems. Think of it as data-as-a-product, not data-as-a-byproduct.',
+  },
+  {
+    term: 'Feature Store',
+    short: 'Shared repository of ML-ready features',
+    detail: 'A centralised store of pre-computed, reusable features (variables) for machine learning models. Ensures consistency between training and serving, reduces duplicated feature engineering across teams, and provides lineage and documentation. Part of the shared ML platform on Databricks.',
+  },
+  {
+    term: 'Agent Factory',
+    short: 'Reusable frameworks for building AI agents at scale',
+    detail: 'The AI Platform Engineer\u2019s core deliverable: standardised frameworks, templates, and infrastructure for building, deploying, and monitoring AI agents. Includes LLM orchestration, tool-use patterns (MCP), evaluation pipelines, cost controls, and governance integration. Enables spoke teams to build agents without starting from scratch each time.',
+  },
+  {
+    term: 'Value Realisation',
+    short: 'Ensuring data & AI initiatives deliver measurable outcomes',
+    detail: 'The discipline of linking every data and AI initiative to measurable business value. Includes a shared value vocabulary (value tree), uncompromising value consideration from early in the use-case lifecycle, and periodic evaluation to ensure implementation matches intended outcomes. One of the lowest-scoring dimensions in TV 2\u2019s current maturity assessment.',
+  },
+]
+
+function Glossary() {
+  const [openTerm, setOpenTerm] = useState(null)
+
+  return (
+    <div className="glossary" onClick={e => e.stopPropagation()}>
+      <div className="glossary-header">
+        <span className="glossary-title">Key Terms</span>
+        <span className="glossary-hint">Click a term for details</span>
+      </div>
+      <div className="glossary-terms">
+        {GLOSSARY.map(item => (
+          <div key={item.term} className="glossary-term-wrapper">
+            <button
+              className={`glossary-chip ${openTerm === item.term ? 'active' : ''}`}
+              onClick={() => setOpenTerm(openTerm === item.term ? null : item.term)}
+            >
+              <span className="glossary-chip-term">{item.term}</span>
+              <span className="glossary-chip-short">{item.short}</span>
+            </button>
+            {openTerm === item.term && (
+              <div className="glossary-detail">
+                <div className="glossary-detail-title">{item.term}</div>
+                <div className="glossary-detail-text">{item.detail}</div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ────────────────────────────────────────────
 // POSITIONING
 // ────────────────────────────────────────────
 
@@ -657,6 +766,7 @@ function App() {
               />
             ))}
           </div>
+          <Glossary />
         </div>
       </div>
 
