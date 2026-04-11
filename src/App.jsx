@@ -10,6 +10,8 @@ const PERSONAS = [
   { id: 'nonit-builder', label: 'Data Product Builder', sublabel: 'Non-IT, builds with data & AI', color: '#8b5cf6', icon: '\u{1F9E0}' },
   { id: 'it-dep', label: 'IT Data Consumer', sublabel: 'IT, data dependent', color: '#06b6d4', icon: '\u{1F4BB}' },
   { id: 'it-pro', label: 'Data & AI Professional', sublabel: 'IT, data/ML/AI professional', color: '#10b981', icon: '\u{2699}\u{FE0F}' },
+  { id: 'everyday-ai', label: 'Everyday AI Builder', sublabel: 'Non-IT, builds personal AI tools', color: '#f59e0b', icon: '\u{2728}' },
+  { id: 'ai-engineer', label: 'AI Platform Engineer', sublabel: 'IT, builds AI infrastructure', color: '#ec4899', icon: '\u{1F916}' },
 ]
 
 const SILOS = [
@@ -73,6 +75,30 @@ const PHASE_DETAILS = [
         tools: ['Multiple clouds', 'Team-specific DBs', 'Ad-hoc notebooks'],
         maturity: { access: 2, governance: 1, ai: 2, value: 1 },
       },
+      {
+        desc: 'Interested in AI but no tools or guidance. Uses free ChatGPT on personal devices. No way to build anything that connects to TV 2 data or processes.',
+        capabilities: [
+          { icon: 'partial', text: 'Uses CoPilot for basic writing and email assistance' },
+          { icon: 'no', text: 'No ability to build AI workflows or automations' },
+          { icon: 'no', text: 'No access to TV 2 data from AI tools' },
+          { icon: 'no', text: 'No guidelines for what is allowed vs. not' },
+          { icon: 'no', text: 'No way to share useful AI solutions with colleagues' },
+        ],
+        tools: ['CoPilot (basic)', 'Free ChatGPT'],
+        maturity: { access: 1, governance: 0.5, ai: 1, value: 0.5 },
+      },
+      {
+        desc: 'AI capabilities scattered across teams. No shared agent framework or platform. Each team experiments with different LLM providers and approaches.',
+        capabilities: [
+          { icon: 'partial', text: 'Some teams experimenting with AI/LLM integration' },
+          { icon: 'no', text: 'No shared AI platform or agent framework' },
+          { icon: 'no', text: 'No standardised approach to building AI solutions' },
+          { icon: 'no', text: 'No AI governance or risk assessment process' },
+          { icon: 'no', text: 'No reusable components \u2014 every AI project starts from scratch' },
+        ],
+        tools: ['Ad-hoc LLM APIs', 'Team experiments', 'No shared infra'],
+        maturity: { access: 1.5, governance: 0.5, ai: 1.5, value: 0.5 },
+      },
     ],
   },
   {
@@ -128,6 +154,30 @@ const PHASE_DETAILS = [
         ],
         tools: ['Databricks', 'ML Platform', 'CI/CD Pipelines', 'Adobe CDP'],
         maturity: { access: 3, governance: 2.5, ai: 2.5, value: 2 },
+      },
+      {
+        desc: 'CoPilot is rolled out broadly. AI guidelines published. Can build simple personal agents and automations within approved tools \u2014 but only in "sikre zoner".',
+        capabilities: [
+          { icon: 'yes', text: 'CoPilot with full integration \u2014 email, documents, meetings' },
+          { icon: 'partial', text: 'Can build personal CoPilot agents for own workflows' },
+          { icon: 'yes', text: 'Clear AI guidelines \u2014 knows what is allowed in "sikre zoner"' },
+          { icon: 'partial', text: 'Vibe coding with approved browser-based tools' },
+          { icon: 'no', text: 'Cannot yet connect AI tools to governed TV 2 data' },
+        ],
+        tools: ['CoPilot', 'CoPilot Agents', 'Approved AI Tools'],
+        maturity: { access: 2, governance: 2, ai: 2, value: 1.5 },
+      },
+      {
+        desc: 'Building out AI platform capabilities on Databricks. Initial agent framework emerging. Starting to standardise LLM integration patterns.',
+        capabilities: [
+          { icon: 'yes', text: 'AI platform layer on Databricks under development' },
+          { icon: 'partial', text: 'Initial agent framework \u2014 first internal agents in pilot' },
+          { icon: 'partial', text: 'LLM integration patterns being standardised' },
+          { icon: 'yes', text: 'AI risk model and yellow-zone governance for new use cases' },
+          { icon: 'no', text: 'Agent factory not yet production-ready for spoke teams' },
+        ],
+        tools: ['Databricks', 'LLM APIs', 'Agent Framework (pilot)', 'AI Governance'],
+        maturity: { access: 2.5, governance: 2.5, ai: 2.5, value: 2 },
       },
     ],
   },
@@ -189,6 +239,32 @@ const PHASE_DETAILS = [
         spoke: 'Spoke "stor" + Hub \u2014 owns platform, governs all',
         maturity: { access: 4, governance: 3.5, ai: 4, value: 3 },
       },
+      {
+        desc: 'Builds non-customer-facing AI tools that enhance everyday work. Personal agents, workflow automations, and team-level AI solutions \u2014 all within governed "sikre zoner".',
+        capabilities: [
+          { icon: 'yes', text: 'Builds personal AI agents connected to governed TV 2 data' },
+          { icon: 'yes', text: 'Workflow automations via approved low-code AI tools' },
+          { icon: 'yes', text: 'Vibe coding for internal tools with governed data access' },
+          { icon: 'yes', text: 'Shares solutions with team via internal AI marketplace' },
+          { icon: 'yes', text: 'Clear risk framework: "sikre zoner" for internal, escalation path for "risikable"' },
+        ],
+        tools: ['CoPilot Agents', 'AI Workspace', 'Low-Code AI', 'Vibe Coding Tools'],
+        spoke: 'All spokes \u2014 builds within "sikre zoner"',
+        maturity: { access: 3, governance: 3, ai: 3.5, value: 3 },
+      },
+      {
+        desc: 'Operates the AI factory. Builds and maintains agent frameworks, LLM orchestration, and AI platform capabilities that all spokes consume.',
+        capabilities: [
+          { icon: 'yes', text: 'Agent factory: reusable frameworks for building AI agents at scale' },
+          { icon: 'yes', text: 'LLM orchestration layer with model governance and cost control' },
+          { icon: 'yes', text: 'AI platform capabilities on Databricks: RAG, fine-tuning, evaluation' },
+          { icon: 'yes', text: 'Governed APIs for spoke teams to build on (MCP, tool use, etc.)' },
+          { icon: 'yes', text: 'AI governance tooling: risk assessment, approval workflows, monitoring' },
+        ],
+        tools: ['Databricks AI', 'Agent Framework', 'LLM Orchestration', 'MCP', 'AI Gov Tooling'],
+        spoke: 'Hub \u2014 builds the factory, enables all spokes',
+        maturity: { access: 4, governance: 3.5, ai: 4, value: 3.5 },
+      },
     ],
   },
 ]
@@ -200,22 +276,24 @@ const PHASE_DETAILS = [
 function getPhase0Positions(cx, cy) {
   return {
     personas: [
-      { x: cx - 300, y: cy - 100 },
-      { x: cx + 260, y: cy - 70 },
-      { x: cx - 200, y: cy + 120 },
-      { x: cx + 320, y: cy + 130 },
+      { x: cx - 320, y: cy - 100 },
+      { x: cx + 240, y: cy - 80 },
+      { x: cx - 240, y: cy + 130 },
+      { x: cx + 340, y: cy + 120 },
+      { x: cx + 50, y: cy - 130 },
+      { x: cx - 60, y: cy + 140 },
     ],
     silos: [
-      { x: cx - 380, y: cy - 10 },
-      { x: cx - 120, y: cy - 160 },
-      { x: cx + 100, y: cy - 155 },
-      { x: cx + 400, y: cy + 20 },
-      { x: cx - 260, y: cy + 40 },
-      { x: cx + 60, y: cy + 170 },
-      { x: cx + 190, y: cy + 50 },
-      { x: cx - 60, y: cy + 60 },
-      { x: cx - 50, y: cy - 50 },
-      { x: cx + 150, y: cy - 20 },
+      { x: cx - 400, y: cy - 10 },
+      { x: cx - 160, y: cy - 160 },
+      { x: cx + 130, y: cy - 165 },
+      { x: cx + 420, y: cy + 10 },
+      { x: cx - 300, y: cy + 40 },
+      { x: cx + 80, y: cy + 175 },
+      { x: cx + 200, y: cy + 40 },
+      { x: cx - 100, y: cy + 50 },
+      { x: cx - 80, y: cy - 40 },
+      { x: cx + 380, y: cy - 70 },
     ],
     hub: null,
   }
@@ -224,16 +302,18 @@ function getPhase0Positions(cx, cy) {
 function getPhase1Positions(cx, cy) {
   return {
     personas: [
-      { x: cx - 260, y: cy - 140 },
-      { x: cx + 260, y: cy - 140 },
-      { x: cx - 260, y: cy + 140 },
-      { x: cx + 260, y: cy + 140 },
+      { x: cx - 280, y: cy - 140 },
+      { x: cx, y: cy - 150 },
+      { x: cx + 280, y: cy - 140 },
+      { x: cx - 280, y: cy + 140 },
+      { x: cx, y: cy + 150 },
+      { x: cx + 280, y: cy + 140 },
     ],
     silos: [
-      { x: cx - 400, y: cy - 50 },
-      { x: cx - 370, y: cy + 60 },
-      { x: cx + 400, y: cy - 50 },
-      { x: cx + 370, y: cy + 60 },
+      { x: cx - 420, y: cy - 50 },
+      { x: cx - 400, y: cy + 50 },
+      { x: cx + 420, y: cy - 50 },
+      { x: cx + 400, y: cy + 50 },
     ],
     hub: { x: cx, y: cy, r: 60, opacity: 0.7 },
   }
@@ -241,13 +321,13 @@ function getPhase1Positions(cx, cy) {
 
 function getPhase2Positions(cx, cy) {
   const r = 210
+  // 6 spokes evenly distributed
+  const angles = [-Math.PI / 2, -Math.PI / 6, Math.PI / 6, Math.PI / 2, 5 * Math.PI / 6, -5 * Math.PI / 6]
   return {
-    personas: [
-      { x: cx + r * Math.cos(-Math.PI * 0.75), y: cy + r * Math.sin(-Math.PI * 0.75) },
-      { x: cx + r * Math.cos(-Math.PI * 0.25), y: cy + r * Math.sin(-Math.PI * 0.25) },
-      { x: cx + r * Math.cos(Math.PI * 0.75), y: cy + r * Math.sin(Math.PI * 0.75) },
-      { x: cx + r * Math.cos(Math.PI * 0.25), y: cy + r * Math.sin(Math.PI * 0.25) },
-    ],
+    personas: angles.map(a => ({
+      x: cx + r * Math.cos(a),
+      y: cy + r * Math.sin(a),
+    })),
     silos: [],
     hub: { x: cx, y: cy, r: 75, opacity: 1 },
   }
@@ -373,7 +453,7 @@ function App() {
       : getPhase2Positions(cx, cy)
 
   const data = PHASE_DETAILS[phase]
-  const bubbleR = 48
+  const bubbleR = 42
 
   return (
     <div className="app">
@@ -402,7 +482,7 @@ function App() {
         {/* SVG Visualization */}
         <div className="viz-section">
           <div className="viz-container">
-            <svg className="viz-svg" viewBox="0 0 1100 500">
+            <svg className="viz-svg" viewBox="-20 0 1140 500">
               <defs>
                 <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#10b98120" />
@@ -545,7 +625,7 @@ function App() {
                     {phase === 2 && (
                       <text x={pos.x} y={pos.y + 36} fontSize="8" fontWeight="700"
                         fill={persona.color} textAnchor="middle" fontFamily="var(--sans)">
-                        {i === 0 ? 'SPOKE LILLE' : i === 1 ? 'SPOKE MELLEM' : i === 2 ? 'SPOKE LILLE/MELLEM' : 'SPOKE STOR'}
+                        {['SPOKE LILLE', 'SPOKE MELLEM', 'SPOKE LILLE/MELLEM', 'SPOKE STOR', 'ALLE SPOKES', 'HUB'][i]}
                       </text>
                     )}
                   </g>
