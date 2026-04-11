@@ -25,7 +25,7 @@ const PHASE_DETAILS = [
     label: 'FASE 1 \u00B7 AS-IS',
     tabLabel: 'As-Is',
     title: 'The Fragmented Landscape',
-    subtitle: 'No shared ontology. No master data alignment. Each team defines "customer", "content", and "product" differently. Data sits in silos, governance is ad-hoc, and everyone builds their own pipelines.',
+    subtitle: 'No shared ontology. No master data alignment. Each team defines "customer", "content", and "product" differently. Data sits in silos, governance is ad-hoc, and everyone builds their own pipelines. Personalisation is one-to-all, with no unified decisioning or customer 360 view.',
     personas: [
       {
         desc: 'Relies on colleagues or IT to pull data. Waits days or weeks for reports. Gets conflicting numbers from different sources.',
@@ -52,13 +52,13 @@ const PHASE_DETAILS = [
         maturity: { access: 1.5, governance: 1, ai: 1, value: 1 },
       },
       {
-        desc: 'Builds applications that need data, but must integrate with fragmented sources. No unified data layer to consume from.',
+        desc: 'Builds applications that need data, but must integrate with fragmented sources. No unified data layer, no customer 360, and no centralised decisioning to consume from.',
         capabilities: [
           { icon: 'no', text: 'No unified API or data product layer' },
           { icon: 'partial', text: 'Point-to-point integrations with individual data sources' },
           { icon: 'no', text: 'No common data model \u2014 each system has different schemas' },
-          { icon: 'no', text: 'No real-time data access for applications' },
-          { icon: 'partial', text: 'Builds own data transformation logic per project' },
+          { icon: 'no', text: 'No real-time data access \u2014 no customer 360 or content metadata SoR' },
+          { icon: 'no', text: 'No centralised decisioning \u2014 each channel builds own personalisation logic' },
         ],
         tools: ['Custom APIs', 'Direct DB queries', 'FTP transfers'],
         maturity: { access: 1.5, governance: 1, ai: 1, value: 1.5 },
@@ -105,7 +105,7 @@ const PHASE_DETAILS = [
     label: 'FASE 2 \u00B7 INTERMEDIATE',
     tabLabel: 'Intermediate',
     title: 'Consolidation & Foundation',
-    subtitle: 'A shared platform is emerging around Databricks. Master data model is being established with first L1 entities (Kunde, Forbruger, Indhold, Produkt). The Hub is forming \u2014 governance basics and central services are taking shape.',
+    subtitle: 'A shared platform is emerging around Databricks. Master data model is being established with first L1 entities (Kunde, Forbruger, Indhold, Produkt). The Hub is forming \u2014 governance basics and central services are taking shape. Single Customer View (SCV) is being established as System of Record. Experience Management Platform foundation is being built for segment-based personalisation.',
     personas: [
       {
         desc: 'Starting to get self-service dashboards. Power BI connects to the shared platform. Still some Excel, but data is getting more consistent.',
@@ -132,13 +132,13 @@ const PHASE_DETAILS = [
         maturity: { access: 2.5, governance: 2, ai: 2, value: 1.5 },
       },
       {
-        desc: 'Shared data layer forming. Can integrate with curated data products from the platform instead of point-to-point connections.',
+        desc: 'Shared data layer forming. SCV established as System of Record for customer 360. Experience Management Platform foundation enables segment-based personalisation.',
         capabilities: [
           { icon: 'yes', text: 'Data products available via APIs from shared platform' },
-          { icon: 'partial', text: 'Adobe Experience Platform providing unified customer data' },
+          { icon: 'yes', text: 'Single Customer View (SCV) providing unified customer 360' },
+          { icon: 'partial', text: 'Experience Management Platform: segment-based personalisation starting' },
           { icon: 'partial', text: 'Common data model partially rolled out \u2014 priority entities first' },
-          { icon: 'yes', text: 'Real-time customer data accessible for key use cases' },
-          { icon: 'partial', text: 'Reducing point-to-point integrations, some legacy remains' },
+          { icon: 'partial', text: 'Reducing point-to-point integrations, content metadata SoR forming' },
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Power BI'],
         maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
@@ -185,7 +185,7 @@ const PHASE_DETAILS = [
     label: 'FASE 3 \u00B7 TARGET STATE',
     tabLabel: 'Target State',
     title: 'Hub & Spoke Operating Model',
-    subtitle: 'Unified platform with clear spoke archetypes. Common ontology enforced via master data model. Self-service at scale. Governed AI with clear guardrails. Value-driven prioritisation of all data & AI initiatives.',
+    subtitle: 'Unified platform with clear spoke archetypes. Common ontology enforced via master data model. Self-service at scale. Governed AI with clear guardrails. Value-driven prioritisation of all data & AI initiatives. Experience Management Platform delivers user-specific personalisation. Experience Orchestration Layer enables headless omnichannel delivery.',
     personas: [
       {
         desc: 'Full self-service via governed tools. Trusted data with shared definitions. Can answer own questions without waiting for IT.',
@@ -214,25 +214,25 @@ const PHASE_DETAILS = [
         maturity: { access: 3.5, governance: 3, ai: 3.5, value: 3 },
       },
       {
-        desc: 'Consumes curated data products and customer data via governed APIs. Real-time data from Adobe Experience Platform fuels applications.',
+        desc: 'Consumes curated data products, customer 360, and centralised decisioning via governed APIs. Experience Orchestration Layer delivers headless personalisation across channels.',
         capabilities: [
-          { icon: 'yes', text: 'Governed APIs exposing curated data products' },
-          { icon: 'yes', text: 'Adobe Experience Platform: unified customer 360 view' },
-          { icon: 'yes', text: 'Common data model ensures consistent schemas across apps' },
-          { icon: 'yes', text: 'Real-time event streaming for personalisation & recommendations' },
-          { icon: 'yes', text: 'ML model predictions available as API services' },
+          { icon: 'yes', text: 'Governed APIs exposing curated data products and SCV customer 360' },
+          { icon: 'yes', text: 'Experience Management Platform: user-specific real-time personalisation' },
+          { icon: 'yes', text: 'Experience Orchestration Layer: headless omnichannel content delivery' },
+          { icon: 'yes', text: 'Common data model ensures consistent schemas across all channels' },
+          { icon: 'yes', text: 'ML model predictions and content recommendations as API services' },
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Event Streaming'],
         spoke: 'Spoke "lille/mellem" \u2014 integrates governed data products',
         maturity: { access: 3.5, governance: 3, ai: 3, value: 3.5 },
       },
       {
-        desc: 'Owns and operates the platform, ML models, and data products. You-build-it-you-run-it within clear governance. Drives capability for all spokes.',
+        desc: 'Owns and operates the three-layer architecture: Data layer (platform & SSoT), Decision layer (EMP & orchestration), and Engagement layer integration. Drives capability for all spokes.',
         capabilities: [
           { icon: 'yes', text: 'Full Databricks platform: lakehouse, ML, feature store, Unity Catalog' },
-          { icon: 'yes', text: 'End-to-end ML lifecycle: develop, deploy, monitor, retrain' },
-          { icon: 'yes', text: 'Data governance enforced via tooling (lineage, quality, ownership)' },
-          { icon: 'yes', text: 'AI governance: risk model, use-case portfolio, guardrails' },
+          { icon: 'yes', text: 'End-to-end ML lifecycle: develop, deploy, monitor, retrain (MLOps)' },
+          { icon: 'yes', text: 'Data governance enforced via tooling (lineage, quality, federated ownership)' },
+          { icon: 'yes', text: 'Design Authority: CDM adherence, integration patterns, architecture decisions' },
           { icon: 'yes', text: 'Hub services: advisory, engineering, enablement, platform ops' },
         ],
         tools: ['Databricks Unity Catalog', 'ML Platform', 'Adobe CDP', 'Governance Tooling'],
@@ -343,6 +343,36 @@ const GLOSSARY = [
     term: 'Value Realisation',
     short: 'Ensuring data & AI initiatives deliver measurable outcomes',
     detail: 'The discipline of linking every data and AI initiative to measurable business value. Includes a shared value vocabulary (value tree), uncompromising value consideration from early in the use-case lifecycle, and periodic evaluation to ensure implementation matches intended outcomes. One of the lowest-scoring dimensions in TV 2\u2019s current maturity assessment.',
+  },
+  {
+    term: 'Single Customer View',
+    short: 'SCV \u2014 System of Record for customer 360',
+    detail: 'A consolidated, unambiguous, holistic view of each customer \u2014 the System of Record for customer data. Aggregates user profile data from all sources, enforces consent and anonymisation guardrails, and provides a Global Unique Identifier. The SCV is the linchpin: virtually every personalisation, decisioning, and omnichannel capability depends on it. It complements the CDP (Adobe Experience Platform) \u2014 SCV handles user data aggregation, while the CDP handles real-time streaming behaviour and progressive profiling.',
+  },
+  {
+    term: 'Experience Management Platform',
+    short: 'EMP \u2014 centralised decisioning for personalisation',
+    detail: 'The Decision layer in TV 2\u2019s three-layer target architecture (Data \u2192 Decision \u2192 Engagement). Houses centralised capabilities for content recommendations, customer journey decisioning, real-time CDP / customer 360 activation, identity consolidation, segmentation, and campaign management. Ensures unified customer experience across all engagement channels by consolidating decision logic that was previously duplicated in each channel. The single largest investment area in the personalisation strategy.',
+  },
+  {
+    term: 'Experience Orchestration Layer',
+    short: 'EOL \u2014 headless omnichannel delivery',
+    detail: 'A centralised runtime composition and orchestration capability for personalised, headless omnichannel content delivery. Receives requests from engagement channels (TV 2 Play, tv2.dk, TV 2 Sport, etc.), combines channel and customer context with recommendations from the Experience Management Platform, and returns experience payloads. Enables composable, reusable content delivery across all channels rather than each channel building its own personalisation logic.',
+  },
+  {
+    term: 'Three-Layer Architecture',
+    short: 'Data \u2192 Decision \u2192 Engagement',
+    detail: 'TV 2\u2019s target architecture follows strict layer separation: (1) Data layer \u2014 the Data Platform as Single Source of Truth, SCV, and content metadata SoR; (2) Decision layer \u2014 Experience Management Platform with centralised decisioning, recommendations, and journey orchestration; (3) Engagement layer \u2014 decoupled channels (Play, tv2.dk, Sport, Vejr) that consume from the Decision layer but never share data horizontally between each other. Data flows vertically through the layers, never horizontally between channels.',
+  },
+  {
+    term: 'Design Authority',
+    short: 'Governance body for architecture and integrations',
+    detail: 'A cross-organisational committee anchored in Enterprise Architecture, with participation from an architect or staff engineer from each team. Governs the Common Data Model, integration patterns, and architectural decisions. Includes a Decision Authority for integrations that ensures new integrations follow sanctioned patterns and avoid anti-patterns (e.g., engagement channels querying each other directly). Key to preventing fragmentation as the ecosystem grows.',
+  },
+  {
+    term: 'Personalisation Maturity',
+    short: 'From one-to-all to user-specific predictive',
+    detail: 'The progressive personalisation journey aligned with the 4-year roadmap: Year 1 \u2014 segment-based triggers, prescriptive, multi-channel (Play and tv2.dk); Year 2 \u2014 behaviour-based triggers, batch ML predictions, "curated for you"; Year 3 \u2014 user-specific triggers, real-time and predictive, omnichannel across broader TV 2; Year 4 \u2014 full end-to-end customer-centricity with composability, AI, and agility. Revenue target: +35% subscription revenue uplift (~400 DKKm).',
   },
 ]
 
@@ -700,7 +730,7 @@ function App() {
                     GOVERNANCE &middot; COMMON ONTOLOGY &middot; MASTER DATA MODEL
                   </text>
                   <text x={cx} y={cy + 298} textAnchor="middle" fontSize="9.5" fill="#ffffff25" fontWeight="600" letterSpacing="1.5">
-                    DATABRICKS &middot; ADOBE EXPERIENCE PLATFORM &middot; SHARED SERVICES
+                    DATA LAYER &middot; DECISION LAYER (EMP) &middot; ENGAGEMENT LAYER
                   </text>
                 </g>
               )}
