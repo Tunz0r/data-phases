@@ -690,10 +690,10 @@ const VIBE_PERSONAS = PERSONAS.map((persona, i) => {
 
 function VibeMatrix() {
   const zones = [
-    { row: 0, col: 0, label: 'Internt · Hverdag', zone: 'sikker', color: '#10b981', desc: 'Sikker zone — her bør alle eksperimentere', examples: 'CoPilot agents, workflow automation, interne dashboards, personlige AI-værktøjer' },
-    { row: 0, col: 1, label: 'Internt · Game-changing', zone: 'risikabel', color: '#f59e0b', desc: 'Risikabel zone — case-by-case vurdering', examples: 'AI-drevet procesoptimering, agentbaserede workflows, intern videndeling med AI' },
-    { row: 1, col: 0, label: 'Danskerne · Hverdag', zone: 'risikabel', color: '#f59e0b', desc: 'Risikabel zone — kun med governance', examples: 'AI-understøttet kundeservice, indholdssøgning, personalisering' },
-    { row: 1, col: 1, label: 'Danskerne · Game-changing', zone: 'nogo', color: '#ef4444', desc: 'No-go zone for vibe coding', examples: 'GenAI i nyheder, fuldautomatiserede artikler, AI-genereret indhold til Danskerne' },
+    { row: 0, col: 0, label: 'Internt · Hverdag', zone: 'sikker', color: '#10b981', desc: 'Sikker zone — alle bør eksperimentere her', examples: 'CoPilot agents, workflow automation, interne dashboards, personlige AI-værktøjer', who: 'Alle personas' },
+    { row: 0, col: 1, label: 'Internt · Game-changing', zone: 'risikabel', color: '#f59e0b', desc: 'Case-by-case — kræver arkitekturgodkendelse', examples: 'AI-drevet procesoptimering, agentbaserede workflows, intern videndeling med AI', who: 'IT-professionelle med review' },
+    { row: 1, col: 0, label: 'Danskerne · Hverdag', zone: 'risikabel', color: '#f59e0b', desc: 'Kun IT-professionelle med fuld governance', examples: 'AI-understøttet kundeservice, indholdssøgning, personalisering', who: 'Kun Data & AI / AI Platform' },
+    { row: 1, col: 1, label: 'Danskerne · Game-changing', zone: 'nogo', color: '#ef4444', desc: 'Vibe coding aldrig alene — kræver fuld governance', examples: 'GenAI i nyheder, fuldautomatiserede artikler, AI-genereret indhold', who: 'Kun med arkitektur + AI governance' },
   ]
 
   return (
@@ -709,6 +709,7 @@ function VibeMatrix() {
           <div key={z.label} className={`vibe-matrix-cell vibe-zone-${z.zone}`}>
             <div className="vibe-cell-zone" style={{ color: z.color }}>{z.desc}</div>
             <div className="vibe-cell-examples">{z.examples}</div>
+            <div className="vibe-cell-who">{z.who}</div>
           </div>
         ))}
         <div className="vibe-matrix-row-header">Danskerne</div>
@@ -716,6 +717,7 @@ function VibeMatrix() {
           <div key={z.label} className={`vibe-matrix-cell vibe-zone-${z.zone}`}>
             <div className="vibe-cell-zone" style={{ color: z.color }}>{z.desc}</div>
             <div className="vibe-cell-examples">{z.examples}</div>
+            <div className="vibe-cell-who">{z.who}</div>
           </div>
         ))}
       </div>
@@ -784,11 +786,10 @@ function VibeCodingPage() {
         <div className="phase-label" style={{ color: '#8b5cf6' }}>AI GOVERNANCE · VIBE CODING</div>
         <h1 className="phase-title">Where Can We Vibe Code?</h1>
         <p className="phase-subtitle">
-          "Vibe coding" means using AI tools (like CoPilot, Cursor, or GitHub Spark) to build software by describing what you want in plain language.
-          It{"'"}s a powerful capability — but it needs guardrails.
-          This page maps who can build what, and where the boundaries are.
-          The key principle: <strong>internal everyday tools are encouraged for everyone</strong> — but anything customer-facing
-          requires professional oversight. Non-IT staff should never build solutions that reach Danskerne.
+          "Vibe coding" means using AI tools (like CoPilot, Cursor, or GitHub Spark) to build software
+          by describing what you want in plain language — no traditional coding skills required.
+          This is a discussion page: it maps out a proposed position on who can build what,
+          and how we govern it. The goal is alignment, not restriction.
         </p>
       </div>
 
@@ -796,100 +797,158 @@ function VibeCodingPage() {
 
       <div className="vibe-comms" onClick={e => e.stopPropagation()}>
         <div className="vibe-comms-header">
-          <span className="vibe-comms-badge">DRAFT COMMS</span>
-          <h2 className="vibe-comms-title">Suggested Internal Communication</h2>
-          <p className="vibe-comms-hint">Adapt this to TV 2's tone and distribute via appropriate channels</p>
+          <span className="vibe-comms-badge">PROPOSED POSITION</span>
+          <h2 className="vibe-comms-title">Our Stance on Vibe Coding — For Alignment</h2>
+          <p className="vibe-comms-hint">This is the position Architecture is proposing. We need leadership alignment before communicating broadly.</p>
         </div>
 
         <div className="vibe-comms-body">
-          <div className="vibe-comms-section vibe-comms-now">
+          <div className="vibe-comms-section vibe-comms-context">
             <div className="vibe-comms-section-header">
-              <span className="vibe-comms-icon" style={{ background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444' }}>!</span>
-              <h3>What applies right now</h3>
+              <span className="vibe-comms-icon" style={{ background: 'rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>&#9881;</span>
+              <h3>Why this matters now</h3>
             </div>
             <p>
-              We know many of you are excited about AI-assisted coding tools — and we are too.
-              However, <strong>until we have selected and configured an approved vibe coding platform
-              with proper guardrails, you must not use vibe coding tools on TV 2 networks or TV 2 hardware.</strong>
+              We know the fear: <strong>vibe coding looks like shadow IT all over again.</strong> After 35 years
+              without a real IT department and two years into our technology strategy, the instinct to lock things down
+              is understandable. We have all seen what happens when the organisation builds ungoverned solutions
+              — we are still cleaning up after it.
             </p>
             <p>
-              That said, we already have tools you can use today: <strong>GitHub Spark</strong> gives you access
-              to Anthropic's Claude models for building lightweight internal apps, and <strong>Microsoft CoPilot</strong> is
-              already available for everyday productivity — email, documents, meetings, and code assistance.
-              If you have access to these, you can already start exploring within "sikre zoner".
+              But this time is different. We now have a technology strategy, an architecture function,
+              a data platform, and a governance model. <strong>The question is not whether people will use AI
+              to build things — they already are.</strong> The question is whether we channel that energy
+              through governed tools where we have visibility, or push it underground to personal devices
+              and free tools where we have none.
             </p>
             <p>
-              What we're asking is that you <strong>don't install or use ungoverned third-party vibe coding tools</strong> on
-              TV 2 infrastructure. Ungoverned AI tools can inadvertently expose proprietary data, create security vulnerabilities,
-              or produce outputs that compromise our troværdighed toward Danskerne.
-              We have seen this happen at other organisations and we want to learn from their mistakes, not repeat them.
+              Banning vibe coding does not make it go away. It makes it invisible. And invisible
+              is exactly what created the mess we spent two years cleaning up.
+            </p>
+          </div>
+
+          <div className="vibe-comms-section vibe-comms-now">
+            <div className="vibe-comms-section-header">
+              <span className="vibe-comms-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>&#10003;</span>
+              <h3>What we already have</h3>
+            </div>
+            <p>
+              We are not starting from zero. Two tools are already available and approved:
+            </p>
+            <ul className="vibe-comms-list">
+              <li><strong>GitHub Spark</strong> — access to Anthropic{"'"}s Claude models for building lightweight
+              internal apps. Already available to developers and increasingly to power users.</li>
+              <li><strong>Microsoft CoPilot</strong> — available across the organisation for everyday productivity:
+              email, documents, meetings, code assistance, and personal agents.</li>
+            </ul>
+            <p>
+              These are governed tools on governed infrastructure. <strong>If you have access, you can already
+              experiment</strong> — within the internal/everyday quadrant of the matrix above. This is not a future promise.
+              It is the current state.
+            </p>
+          </div>
+
+          <div className="vibe-comms-section vibe-comms-boundary">
+            <div className="vibe-comms-section-header">
+              <span className="vibe-comms-icon" style={{ background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444' }}>!</span>
+              <h3>The one hard boundary</h3>
+            </div>
+            <p>
+              <strong>Do not install or use ungoverned third-party AI coding tools on TV 2 networks or hardware.</strong> This
+              means no personal Cursor licenses, no free-tier AI coding tools, no browser-based IDEs we haven{"'"}t approved.
+            </p>
+            <p>
+              This is not about distrusting our people. It is about <strong>data exposure.</strong> Ungoverned tools
+              can send proprietary code, customer data, or internal business logic to external AI providers
+              without the protections our approved tools have. One journalist{"'"}s helpful automation could
+              inadvertently leak sensitive content. The risk is not the intent — it{"'"}s the tooling.
             </p>
           </div>
 
           <div className="vibe-comms-section vibe-comms-soon">
             <div className="vibe-comms-section-header">
               <span className="vibe-comms-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b' }}>&#8987;</span>
-              <h3>What we are building</h3>
+              <h3>What we are building next</h3>
             </div>
             <p>
-              We are actively evaluating platforms that will give you a <strong>governed, sandboxed environment</strong> where
-              you can safely experiment with vibe coding for internal tools and personal productivity.
-              The platform will include:
+              Architecture is evaluating options to expand beyond GitHub Spark and CoPilot into a
+              <strong> broader governed vibe coding platform</strong> for the entire organisation. The goal is to give
+              everyone — not just IT — the ability to build internal tools safely. The platform will provide:
             </p>
             <ul className="vibe-comms-list">
-              <li><strong>Data access controls</strong> — so AI tools can only see data you're authorised to use</li>
+              <li><strong>Data access controls</strong> — AI tools can only see data you{"'"}re authorised to use</li>
               <li><strong>Output boundaries</strong> — nothing you build can accidentally become customer-facing</li>
-              <li><strong>Approved model access</strong> — vetted LLMs that meet our security and privacy requirements</li>
-              <li><strong>Templates and examples</strong> — so you don't start from scratch but build on proven patterns</li>
-              <li><strong>A sharing mechanism</strong> — so great internal tools can benefit your colleagues too</li>
+              <li><strong>Approved model access</strong> — vetted AI models that meet our security and privacy requirements</li>
+              <li><strong>Templates and examples</strong> — so you build on proven patterns, not from scratch</li>
+              <li><strong>Sharing and reuse</strong> — great internal tools can benefit your colleagues too</li>
             </ul>
+            <p>
+              <strong>This is how we avoid shadow IT 2.0:</strong> not by saying no, but by making the governed path
+              easier and better than the ungoverned alternative. If the official platform is more capable and
+              more convenient than whatever people find on their own, adoption follows naturally.
+            </p>
           </div>
 
           <div className="vibe-comms-section vibe-comms-future">
             <div className="vibe-comms-section-header">
-              <span className="vibe-comms-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>&#10003;</span>
-              <h3>When the platform is ready</h3>
+              <span className="vibe-comms-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>&#9733;</span>
+              <h3>The end state we are aiming for</h3>
             </div>
             <p>
-              Once the governed platform is in place, we <strong>actively encourage</strong> everyone to explore
-              vibe coding for internal, everyday use cases. Building a personal agent that summarises your meetings?
-              Great. Automating a tedious reporting workflow? Absolutely. Creating an internal tool that helps
-              your team work smarter? That's exactly what we want.
+              A meeting organiser that auto-summarises action items. A journalist{"'"}s research assistant that
+              searches TV 2{"'"}s archive. A marketer{"'"}s campaign performance dashboard built in an afternoon.
+              An editor{"'"}s tool that suggests metadata tags. <strong>These are not threats — they are exactly the
+              efficiency gains our technology strategy promised.</strong>
             </p>
             <p>
-              The principle is simple: <strong>if it's internal and everyday — go for it.</strong> If it's
-              game-changing or customer-facing — talk to your Data & AI contact first. If it touches Danskerne directly — that's
-              a job for professionals with full governance.
+              The principle is simple: <strong>internal and everyday — go for it.</strong> Game-changing
+              or process-transforming — discuss with Architecture first. Customer-facing — only through
+              professional development with full governance. This is the same principle we apply to every
+              technology decision: autonomy within guardrails, not freedom without structure.
             </p>
           </div>
 
           <div className="vibe-comms-section vibe-comms-principles">
             <div className="vibe-comms-section-header">
               <span className="vibe-comms-icon" style={{ background: 'rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>&#9733;</span>
-              <h3>The five principles of vibe coding at TV 2</h3>
+              <h3>Five principles for vibe coding at TV 2</h3>
             </div>
             <ol className="vibe-comms-principles-list">
               <li>
                 <strong>Intern før ekstern.</strong> Build for yourself and your team first.
-                Nothing you vibe code should ever reach a customer without professional review.
+                Nothing reaches a customer without professional review and governance.
               </li>
               <li>
-                <strong>Platform, ikke personlig maskine.</strong> Use the approved platform, not your personal setup.
-                This protects you, your data, and TV 2.
+                <strong>Platform, ikke personlig maskine.</strong> Use approved tools (GitHub Spark, CoPilot),
+                not personal setups. This protects our data, our people, and TV 2.
               </li>
               <li>
-                <strong>Byg videre, ikke forfra.</strong> Start from templates and examples.
-                The agent factory and shared patterns exist so you don't reinvent the wheel.
+                <strong>Byg videre, ikke forfra.</strong> Start from templates and shared patterns.
+                The platform provides building blocks so you don{"'"}t reinvent the wheel.
               </li>
               <li>
                 <strong>Del det gode.</strong> If you build something useful, share it.
-                The internal AI marketplace makes your colleagues' lives easier too.
+                One team{"'"}s solution can save dozens of colleagues hours every week.
               </li>
               <li>
-                <strong>Kend din zone.</strong> Check the risk matrix above.
-                If you're in a green zone, go ahead. Yellow means check first. Red means stop.
+                <strong>Kend din zone.</strong> Check the matrix above. Green means go.
+                Yellow means discuss with Architecture. Red means this needs full governance.
               </li>
             </ol>
+          </div>
+
+          <div className="vibe-comms-section vibe-comms-alignment">
+            <div className="vibe-comms-section-header">
+              <span className="vibe-comms-icon" style={{ background: 'rgba(59, 130, 246, 0.15)', color: '#3b82f6' }}>?</span>
+              <h3>What we need alignment on</h3>
+            </div>
+            <ul className="vibe-comms-list">
+              <li>Do we agree that <strong>enabling governed vibe coding is better than banning it?</strong> (Architecture{"'"}s position: yes — banning creates shadow IT, enabling with guardrails creates visibility)</li>
+              <li>Do we agree that <strong>GitHub Spark and CoPilot are sufficient for now</strong>, with a broader platform evaluation underway?</li>
+              <li>Do we agree on the <strong>matrix boundaries</strong> — specifically, that non-IT personas should not build customer-facing solutions, but IT professionals can with governance?</li>
+              <li>Do we agree that <strong>Architecture owns the tool approval and governance framework</strong> for vibe coding, consistent with our technology strategy?</li>
+              <li>Are we ready to <strong>communicate this position to the broader organisation</strong>, or do we need a pilot phase first?</li>
+            </ul>
           </div>
         </div>
       </div>
