@@ -610,11 +610,11 @@ const VIBE_PERSONAS = PERSONAS.map((persona, i) => {
       desc: 'Technical enough to build useful prototypes. Vibe coding lets them rapidly test data product ideas — but production deployment must go through governed channels.',
       zone: 'sikker',
       zoneLabel: 'Sikker zone — prototyping & internal tools',
-      scores: { internal_everyday: 4, internal_gamechanging: 3, customer_everyday: 1, customer_gamechanging: 0 },
+      scores: { internal_everyday: 4, internal_gamechanging: 3, customer_everyday: 0, customer_gamechanging: 0 },
       examples: [
         { icon: 'yes', text: 'Rapid prototyping of internal data products and ML experiments' },
         { icon: 'yes', text: 'Internal tools for team workflow automation' },
-        { icon: 'partial', text: 'Customer-facing prototypes OK for demo only — not production' },
+        { icon: 'no', text: 'Should NOT build anything customer-facing — even prototypes go through IT' },
         { icon: 'no', text: 'Should NOT deploy vibe-coded solutions to production without review' },
         { icon: 'no', text: 'Should NOT build customer-facing AI features outside governed pipeline' },
       ],
@@ -623,14 +623,14 @@ const VIBE_PERSONAS = PERSONAS.map((persona, i) => {
     // IT Data Consumer
     {
       desc: 'Builds applications professionally. Vibe coding accelerates development but output must meet existing code quality, security, and review standards.',
-      zone: 'risikabel',
-      zoneLabel: 'Risikabel zone — needs governance framework',
-      scores: { internal_everyday: 4, internal_gamechanging: 3, customer_everyday: 2.5, customer_gamechanging: 1 },
+      zone: 'sikker',
+      zoneLabel: 'Sikker zone — internal tooling only',
+      scores: { internal_everyday: 4, internal_gamechanging: 3, customer_everyday: 0, customer_gamechanging: 0 },
       examples: [
         { icon: 'yes', text: 'AI-assisted coding for internal services and tooling' },
         { icon: 'yes', text: 'Vibe coding for rapid internal application development' },
-        { icon: 'partial', text: 'Customer-facing code with AI assist OK — but standard review applies' },
-        { icon: 'no', text: 'Vibe-coded customer features must NOT skip code review and QA' },
+        { icon: 'no', text: 'Should NOT vibe code anything customer-facing — standard dev pipeline applies' },
+        { icon: 'no', text: 'Customer-facing code must go through professional review and QA' },
         { icon: 'no', text: 'AI-generated code touching user data needs security review' },
       ],
       tools: ['CoPilot', 'Cursor/Windsurf', 'AI code assistants', 'Standard CI/CD'],
@@ -640,7 +640,7 @@ const VIBE_PERSONAS = PERSONAS.map((persona, i) => {
       desc: 'Sets the standards others follow. Responsible for ensuring vibe-coded output from all personas meets quality and governance requirements before it reaches production.',
       zone: 'risikabel',
       zoneLabel: 'Risikabel zone — high capability, high responsibility',
-      scores: { internal_everyday: 4.5, internal_gamechanging: 4, customer_everyday: 3, customer_gamechanging: 2 },
+      scores: { internal_everyday: 4.5, internal_gamechanging: 4, customer_everyday: 3, customer_gamechanging: 4 },
       examples: [
         { icon: 'yes', text: 'AI-accelerated platform development and ML pipeline building' },
         { icon: 'yes', text: 'Building governed templates and guardrails for spoke vibe coding' },
