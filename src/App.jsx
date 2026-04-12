@@ -578,11 +578,245 @@ function PersonaCard({ persona, detail, colorIndex }) {
 }
 
 // ────────────────────────────────────────────
+// VIBE CODING DATA
+// ────────────────────────────────────────────
+
+const VIBE_DIMS = [
+  { key: 'internal_everyday', label: 'Internt · Hverdag', desc: 'Internal everyday tools' },
+  { key: 'internal_gamechanging', label: 'Internt · Game-changing', desc: 'Internal transformative solutions' },
+  { key: 'customer_everyday', label: 'Danskerne · Hverdag', desc: 'Customer-facing everyday' },
+  { key: 'customer_gamechanging', label: 'Danskerne · Game-changing', desc: 'Customer-facing transformative' },
+]
+
+const VIBE_PERSONAS = PERSONAS.map((persona, i) => {
+  const profiles = [
+    // Data Consumer
+    {
+      desc: 'Uses CoPilot and basic AI tools daily. Wants to automate report generation and data lookups. No coding background — vibe coding could unlock simple internal automations.',
+      zone: 'sikker',
+      zoneLabel: 'Sikker zone — internal efficiency',
+      scores: { internal_everyday: 4, internal_gamechanging: 1.5, customer_everyday: 0, customer_gamechanging: 0 },
+      examples: [
+        { icon: 'yes', text: 'Personal CoPilot agents for data summaries and email drafting' },
+        { icon: 'yes', text: 'Vibe-coded dashboards and internal reporting tools' },
+        { icon: 'yes', text: 'Automated meeting summaries and action item tracking' },
+        { icon: 'no', text: 'Should NOT build tools that surface data to customers or public' },
+        { icon: 'no', text: 'Should NOT create workflows that bypass data governance' },
+      ],
+      tools: ['CoPilot', 'Low-code AI tools', 'Browser-based vibe coding'],
+    },
+    // Data Product Builder
+    {
+      desc: 'Technical enough to build useful prototypes. Vibe coding lets them rapidly test data product ideas — but production deployment must go through governed channels.',
+      zone: 'sikker',
+      zoneLabel: 'Sikker zone — prototyping & internal tools',
+      scores: { internal_everyday: 4, internal_gamechanging: 3, customer_everyday: 1, customer_gamechanging: 0 },
+      examples: [
+        { icon: 'yes', text: 'Rapid prototyping of internal data products and ML experiments' },
+        { icon: 'yes', text: 'Internal tools for team workflow automation' },
+        { icon: 'partial', text: 'Customer-facing prototypes OK for demo only — not production' },
+        { icon: 'no', text: 'Should NOT deploy vibe-coded solutions to production without review' },
+        { icon: 'no', text: 'Should NOT build customer-facing AI features outside governed pipeline' },
+      ],
+      tools: ['Databricks notebooks', 'CoPilot', 'Cursor/Windsurf', 'Approved AI tools'],
+    },
+    // IT Data Consumer
+    {
+      desc: 'Builds applications professionally. Vibe coding accelerates development but output must meet existing code quality, security, and review standards.',
+      zone: 'risikabel',
+      zoneLabel: 'Risikabel zone — needs governance framework',
+      scores: { internal_everyday: 4, internal_gamechanging: 3, customer_everyday: 2.5, customer_gamechanging: 1 },
+      examples: [
+        { icon: 'yes', text: 'AI-assisted coding for internal services and tooling' },
+        { icon: 'yes', text: 'Vibe coding for rapid internal application development' },
+        { icon: 'partial', text: 'Customer-facing code with AI assist OK — but standard review applies' },
+        { icon: 'no', text: 'Vibe-coded customer features must NOT skip code review and QA' },
+        { icon: 'no', text: 'AI-generated code touching user data needs security review' },
+      ],
+      tools: ['CoPilot', 'Cursor/Windsurf', 'AI code assistants', 'Standard CI/CD'],
+    },
+    // Data & AI Professional
+    {
+      desc: 'Sets the standards others follow. Responsible for ensuring vibe-coded output from all personas meets quality and governance requirements before it reaches production.',
+      zone: 'risikabel',
+      zoneLabel: 'Risikabel zone — high capability, high responsibility',
+      scores: { internal_everyday: 4.5, internal_gamechanging: 4, customer_everyday: 3, customer_gamechanging: 2 },
+      examples: [
+        { icon: 'yes', text: 'AI-accelerated platform development and ML pipeline building' },
+        { icon: 'yes', text: 'Building governed templates and guardrails for spoke vibe coding' },
+        { icon: 'partial', text: 'Customer-facing AI with full governance, review, and monitoring' },
+        { icon: 'partial', text: 'Game-changing customer AI (personalisation, recommendations) — case-by-case' },
+        { icon: 'no', text: 'Must NOT bypass AI governance even with high technical capability' },
+      ],
+      tools: ['Full AI dev stack', 'Agent frameworks', 'LLM orchestration', 'AI Gov tooling'],
+    },
+    // Everyday AI Builder
+    {
+      desc: 'The journalist, the editor, the marketer — building personal AI tools. This is where the biggest opportunity AND the biggest risk lives. Clear guardrails are essential.',
+      zone: 'sikker',
+      zoneLabel: 'Sikker zone ONLY — internal, non-customer-facing',
+      scores: { internal_everyday: 4.5, internal_gamechanging: 2, customer_everyday: 0, customer_gamechanging: 0 },
+      examples: [
+        { icon: 'yes', text: 'Personal workflow agents — research, summaries, scheduling' },
+        { icon: 'yes', text: 'Team-level tools for internal collaboration and efficiency' },
+        { icon: 'yes', text: 'Vibe-coded internal dashboards and data exploration tools' },
+        { icon: 'no', text: 'Must NOT build anything customer-facing or that touches Danskerne' },
+        { icon: 'no', text: 'Must NOT use AI to generate content for news or editorial output' },
+      ],
+      tools: ['CoPilot Agents', 'Approved low-code AI', 'Browser-based vibe coding'],
+    },
+    // AI Platform Engineer
+    {
+      desc: 'Builds the guardrails and platform that make safe vibe coding possible for everyone else. Responsible for the "factory" that governs what others build.',
+      zone: 'risikabel',
+      zoneLabel: 'Risikabel zone — builds the safety net',
+      scores: { internal_everyday: 4.5, internal_gamechanging: 4.5, customer_everyday: 3.5, customer_gamechanging: 3 },
+      examples: [
+        { icon: 'yes', text: 'Building governed vibe coding environments and templates' },
+        { icon: 'yes', text: 'Creating sandboxed AI workspaces with data access controls' },
+        { icon: 'yes', text: 'Agent factory: reusable, governed agent frameworks for all spokes' },
+        { icon: 'partial', text: 'Customer-facing AI infrastructure — with full governance stack' },
+        { icon: 'partial', text: 'Game-changing AI (agent-based services) — risk assessment required' },
+      ],
+      tools: ['Full platform stack', 'AI governance tooling', 'MCP', 'Sandbox infrastructure'],
+    },
+  ]
+  return profiles[i]
+})
+
+// ────────────────────────────────────────────
+// VIBE CODING PAGE COMPONENT
+// ────────────────────────────────────────────
+
+function VibeMatrix() {
+  const zones = [
+    { row: 0, col: 0, label: 'Internt · Hverdag', zone: 'sikker', color: '#10b981', desc: 'Sikker zone — her bør alle eksperimentere', examples: 'CoPilot agents, workflow automation, interne dashboards, personlige AI-værktøjer' },
+    { row: 0, col: 1, label: 'Internt · Game-changing', zone: 'risikabel', color: '#f59e0b', desc: 'Risikabel zone — case-by-case vurdering', examples: 'AI-drevet procesoptimering, agentbaserede workflows, intern videndeling med AI' },
+    { row: 1, col: 0, label: 'Danskerne · Hverdag', zone: 'risikabel', color: '#f59e0b', desc: 'Risikabel zone — kun med governance', examples: 'AI-understøttet kundeservice, indholdssøgning, personalisering' },
+    { row: 1, col: 1, label: 'Danskerne · Game-changing', zone: 'nogo', color: '#ef4444', desc: 'No-go zone for vibe coding', examples: 'GenAI i nyheder, fuldautomatiserede artikler, AI-genereret indhold til Danskerne' },
+  ]
+
+  return (
+    <div className="vibe-matrix" onClick={e => e.stopPropagation()}>
+      <div className="vibe-matrix-header">
+        <div className="vibe-matrix-corner" />
+        <div className="vibe-matrix-col-header">Hverdag</div>
+        <div className="vibe-matrix-col-header">Game-changing</div>
+      </div>
+      <div className="vibe-matrix-body">
+        <div className="vibe-matrix-row-header">TV 2 internt</div>
+        {zones.filter(z => z.row === 0).map(z => (
+          <div key={z.label} className={`vibe-matrix-cell vibe-zone-${z.zone}`}>
+            <div className="vibe-cell-zone" style={{ color: z.color }}>{z.desc}</div>
+            <div className="vibe-cell-examples">{z.examples}</div>
+          </div>
+        ))}
+        <div className="vibe-matrix-row-header">Danskerne</div>
+        {zones.filter(z => z.row === 1).map(z => (
+          <div key={z.label} className={`vibe-matrix-cell vibe-zone-${z.zone}`}>
+            <div className="vibe-cell-zone" style={{ color: z.color }}>{z.desc}</div>
+            <div className="vibe-cell-examples">{z.examples}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function VibeCard({ persona, vibe, colorIndex }) {
+  const iconMap = { yes: '\u2713', no: '\u2717', partial: '\u25CB' }
+  const classMap = { yes: 'cap-yes', no: 'cap-no', partial: 'cap-partial' }
+  const zoneColors = { sikker: '#10b981', risikabel: '#f59e0b', nogo: '#ef4444' }
+
+  return (
+    <div className={`persona-card color-${colorIndex}`} onClick={e => e.stopPropagation()}>
+      <div className="persona-card-header">
+        <div className="persona-card-icon">{persona.icon}</div>
+        <div>
+          <div className="persona-card-name">{persona.label}</div>
+          <div className="persona-card-role">{persona.sublabel}</div>
+        </div>
+      </div>
+      <div className="persona-card-desc">{vibe.desc}</div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: zoneColors[vibe.zone], marginBottom: 10 }}>
+        {vibe.zoneLabel}
+      </div>
+      <div className="maturity-section">
+        {VIBE_DIMS.map(dim => {
+          const val = vibe.scores[dim.key]
+          const pct = (val / 5) * 100
+          const barColor = val === 0 ? '#ef4444' : val <= 1.5 ? '#ef4444' : val <= 2.5 ? '#f59e0b' : '#10b981'
+          return (
+            <div key={dim.key} className="maturity-row">
+              <span className="maturity-label">{dim.label}</span>
+              <div className="maturity-bar-track">
+                <div className="maturity-bar-fill" style={{ width: `${pct}%`, background: barColor }} />
+                {[1, 2, 3, 4].map(n => (
+                  <div key={n} className="maturity-bar-marker" style={{ left: `${(n / 5) * 100}%` }} />
+                ))}
+              </div>
+              <span className="maturity-value">{val || '\u2014'}</span>
+            </div>
+          )
+        })}
+      </div>
+      <ul className="capability-list">
+        {vibe.examples.map((ex, i) => (
+          <li key={i} className="capability-item">
+            <span className={`capability-icon ${classMap[ex.icon]}`}>{iconMap[ex.icon]}</span>
+            <span>{ex.text}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="tools-row">
+        {vibe.tools.map((tool, i) => (
+          <span key={i} className="tool-tag">{tool}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function VibeCodingPage() {
+  return (
+    <div className="main-content" style={{ cursor: 'default' }}>
+      <div className="phase-header">
+        <div className="phase-label" style={{ color: '#8b5cf6' }}>AI GOVERNANCE · VIBE CODING</div>
+        <h1 className="phase-title">Where Can We Vibe Code?</h1>
+        <p className="phase-subtitle">
+          Mapping each persona's vibe coding mandate against TV 2's AI risk framework.
+          The key principle: internal everyday tools are encouraged for everyone — but anything customer-facing
+          or game-changing requires governance, review, and professional oversight.
+          Non-professionals should never build customer-facing AI solutions.
+        </p>
+      </div>
+
+      <VibeMatrix />
+
+      <div className="bottom-panel">
+        <div className="persona-grid">
+          {PERSONAS.map((persona, i) => (
+            <VibeCard
+              key={persona.id}
+              persona={persona}
+              vibe={VIBE_PERSONAS[i]}
+              colorIndex={i}
+            />
+          ))}
+        </div>
+        <Glossary />
+      </div>
+    </div>
+  )
+}
+
+// ────────────────────────────────────────────
 // APP
 // ────────────────────────────────────────────
 
 function App() {
   const [phase, setPhase] = useState(0)
+  const [showVibe, setShowVibe] = useState(false)
 
   const advance = useCallback(() => {
     setPhase(p => (p + 1) % 3)
@@ -605,15 +839,25 @@ function App() {
         {PHASE_DETAILS.map((p, i) => (
           <div
             key={i}
-            className={`phase-tab tab-${i} ${phase === i ? 'active' : ''}`}
-            onClick={() => setPhase(i)}
+            className={`phase-tab tab-${i} ${!showVibe && phase === i ? 'active' : ''}`}
+            onClick={() => { setPhase(i); setShowVibe(false) }}
           >
             <div className="phase-tab-label">{i === 0 ? 'FASE 1' : i === 1 ? 'FASE 2' : 'FASE 3'}</div>
             <div className="phase-tab-title">{p.tabLabel}</div>
           </div>
         ))}
+        <div
+          className={`phase-tab tab-vibe ${showVibe ? 'active' : ''}`}
+          onClick={() => setShowVibe(true)}
+        >
+          <div className="phase-tab-label" style={{ color: '#8b5cf6' }}>DISCUSSION</div>
+          <div className="phase-tab-title">Vibe Coding</div>
+        </div>
       </nav>
 
+      {showVibe ? (
+        <VibeCodingPage />
+      ) : (
       <div className="main-content" onClick={advance}>
         {/* Header */}
         <div className="phase-header">
@@ -803,13 +1047,16 @@ function App() {
           <Glossary />
         </div>
       </div>
+      )}
 
       {/* Click hint */}
-      <div className="bottom-bar">
-        <span className="click-hint">
-          Click anywhere to advance &middot; {data.label}
-        </span>
-      </div>
+      {!showVibe && (
+        <div className="bottom-bar">
+          <span className="click-hint">
+            Click anywhere to advance &middot; {data.label}
+          </span>
+        </div>
+      )}
     </div>
   )
 }
