@@ -6,12 +6,12 @@ import './App.css'
 // ────────────────────────────────────────────
 
 const PERSONAS = [
-  { id: 'nonit-dep', label: 'Data Consumer', sublabel: 'Non-IT, data dependent', color: '#3b82f6', icon: '\u{1F4CA}' },
-  { id: 'nonit-builder', label: 'Data Product Builder', sublabel: 'Non-IT, builds with data & AI', color: '#8b5cf6', icon: '\u{1F9E0}' },
-  { id: 'it-dep', label: 'IT Data Consumer', sublabel: 'IT, data dependent', color: '#06b6d4', icon: '\u{1F4BB}' },
-  { id: 'it-pro', label: 'Data & AI Professional', sublabel: 'IT, data/ML/AI professional', color: '#10b981', icon: '\u{2699}\u{FE0F}' },
-  { id: 'everyday-ai', label: 'Everyday AI Builder', sublabel: 'Non-IT, builds personal AI tools', color: '#f59e0b', icon: '\u{2728}' },
-  { id: 'ai-engineer', label: 'AI Platform Engineer', sublabel: 'IT, builds AI infrastructure', color: '#ec4899', icon: '\u{1F916}' },
+  { id: 'nonit-dep', label: 'Data Consumer', sublabel: 'Non-IT \u2014 needs data to do their job', color: '#3b82f6', icon: '\u{1F4CA}' },
+  { id: 'nonit-builder', label: 'Citizen Developer', sublabel: 'Non-IT \u2014 builds solutions with data & AI', color: '#8b5cf6', icon: '\u{1F9E0}' },
+  { id: 'it-dep', label: 'IT Data Consumer', sublabel: 'IT \u2014 builds apps that need data', color: '#06b6d4', icon: '\u{1F4BB}' },
+  { id: 'it-pro', label: 'Data & AI Professional', sublabel: 'IT \u2014 data engineering, ML, AI specialist', color: '#10b981', icon: '\u{2699}\u{FE0F}' },
+  { id: 'everyday-ai', label: 'Everyday AI Builder', sublabel: 'Non-IT \u2014 builds personal AI tools', color: '#f59e0b', icon: '\u{2728}' },
+  { id: 'ai-engineer', label: 'AI Platform Engineer', sublabel: 'IT \u2014 builds AI infrastructure for others', color: '#ec4899', icon: '\u{1F916}' },
 ]
 
 const SILOS = [
@@ -25,7 +25,7 @@ const PHASE_DETAILS = [
     label: 'FASE 1 \u00B7 AS-IS',
     tabLabel: 'As-Is',
     title: 'The Fragmented Landscape',
-    subtitle: 'No shared ontology. No master data alignment. Each team defines "customer", "content", and "product" differently. Data sits in silos, governance is ad-hoc, and everyone builds their own pipelines. Personalisation is one-to-all, with no unified decisioning or customer 360 view.',
+    subtitle: 'No shared language for data. Each team defines "customer", "content", and "product" differently. Data sits in silos, governance is ad-hoc, and everyone builds their own solutions. Personalisation is one-size-fits-all \u2014 we have no complete view of our customers and no shared way to tailor their experience.',
     personas: [
       {
         desc: 'Relies on colleagues or IT to pull data. Waits days or weeks for reports. Gets conflicting numbers from different sources.',
@@ -40,37 +40,37 @@ const PHASE_DETAILS = [
         maturity: { access: 1, governance: 1, ai: 1, value: 1 },
       },
       {
-        desc: 'Wants to build data-driven solutions but ends up creating shadow IT. No shared platform or data products to build on.',
+        desc: 'Wants to build data-driven solutions but ends up creating shadow IT. No shared platform or reusable data to build on.',
         capabilities: [
-          { icon: 'no', text: 'No governed platform for prototyping or building' },
-          { icon: 'no', text: 'No access to AI/ML capabilities' },
-          { icon: 'partial', text: 'Builds own pipelines in isolated tools' },
-          { icon: 'no', text: 'No shared feature store or data catalogue' },
-          { icon: 'no', text: 'Cannot operationalise models \u2014 relies on IT for deployment' },
+          { icon: 'no', text: 'No approved platform for prototyping or building' },
+          { icon: 'no', text: 'No access to AI or machine learning capabilities' },
+          { icon: 'partial', text: 'Builds own data flows in isolated tools' },
+          { icon: 'no', text: 'No shared catalogue \u2014 can\u2019t find what data exists' },
+          { icon: 'no', text: 'Can\u2019t put solutions into production \u2014 relies on IT for deployment' },
         ],
         tools: ['Excel', 'Local Python', 'Shadow IT tools'],
         maturity: { access: 1.5, governance: 1, ai: 1, value: 1 },
       },
       {
-        desc: 'Builds applications that need data, but must integrate with fragmented sources. No unified data layer, no customer 360, and no centralised decisioning to consume from.',
+        desc: 'Builds applications that need data, but must connect to fragmented sources one by one. No unified data layer, no complete customer view, and no shared personalisation logic.',
         capabilities: [
-          { icon: 'no', text: 'No unified API or data product layer' },
-          { icon: 'partial', text: 'Point-to-point integrations with individual data sources' },
-          { icon: 'no', text: 'No common data model \u2014 each system has different schemas' },
-          { icon: 'no', text: 'No real-time data access \u2014 no customer 360 or content metadata SoR' },
-          { icon: 'no', text: 'No centralised decisioning \u2014 each channel builds own personalisation logic' },
+          { icon: 'no', text: 'No unified way to access data \u2014 every app connects differently' },
+          { icon: 'partial', text: 'One-off connections to individual data sources' },
+          { icon: 'no', text: 'No common data model \u2014 each system defines things differently' },
+          { icon: 'no', text: 'No complete customer view or content overview across systems' },
+          { icon: 'no', text: 'No shared personalisation \u2014 each channel (Play, tv2.dk, etc.) builds its own' },
         ],
         tools: ['Custom APIs', 'Direct DB queries', 'FTP transfers'],
         maturity: { access: 1.5, governance: 1, ai: 1, value: 1.5 },
       },
       {
-        desc: 'Maintains separate platforms across teams. Data engineers duplicate pipelines. ML engineers lack shared infrastructure.',
+        desc: 'Maintains separate platforms across teams. Data engineers duplicate work. AI/ML engineers lack shared infrastructure.',
         capabilities: [
-          { icon: 'partial', text: 'Separate cloud platforms per team (no consolidation)' },
-          { icon: 'no', text: 'No shared ML platform or feature store' },
-          { icon: 'no', text: 'No common data governance or quality framework' },
-          { icon: 'partial', text: 'Builds pipelines, but duplicates effort across teams' },
-          { icon: 'no', text: 'No standardised deployment or monitoring of ML models' },
+          { icon: 'partial', text: 'Separate cloud platforms per team \u2014 no consolidation' },
+          { icon: 'no', text: 'No shared AI/ML platform or reusable data library' },
+          { icon: 'no', text: 'No common framework for data quality or ownership' },
+          { icon: 'partial', text: 'Builds data flows, but duplicates effort across teams' },
+          { icon: 'no', text: 'No standard way to deploy or monitor AI models in production' },
         ],
         tools: ['Multiple clouds', 'Team-specific DBs', 'Ad-hoc notebooks'],
         maturity: { access: 2, governance: 1, ai: 2, value: 1 },
@@ -105,7 +105,7 @@ const PHASE_DETAILS = [
     label: 'FASE 2 \u00B7 INTERMEDIATE',
     tabLabel: 'Intermediate',
     title: 'Consolidation & Foundation',
-    subtitle: 'A shared platform is emerging around Databricks. Master data model is being established with first L1 entities (Kunde, Forbruger, Indhold, Produkt). The Hub is forming \u2014 governance basics and central services are taking shape. Single Customer View (SCV) is being established as System of Record. Experience Management Platform foundation is being built for segment-based personalisation.',
+    subtitle: 'A shared data platform (Databricks) is emerging. We are agreeing on what "customer", "content", and "product" mean across TV 2 (Kunde, Forbruger, Indhold, Produkt). A central Hub team is forming to provide governance, shared services, and a unified customer view. The foundation for personalisation is being laid.',
     personas: [
       {
         desc: 'Starting to get self-service dashboards. Power BI connects to the shared platform. Still some Excel, but data is getting more consistent.',
@@ -123,36 +123,36 @@ const PHASE_DETAILS = [
         desc: 'Can now access shared data and initial AI tooling. Databricks notebooks available for prototyping. Governance gives guardrails.',
         capabilities: [
           { icon: 'yes', text: 'Databricks notebooks for data exploration and prototyping' },
-          { icon: 'partial', text: 'AI/ML capabilities becoming available via shared platform' },
-          { icon: 'partial', text: 'Can build on governed data \u2014 but not all domains onboarded yet' },
-          { icon: 'yes', text: 'AI use case approval process emerging (yellow-zone governance)' },
+          { icon: 'partial', text: 'AI and machine learning capabilities becoming available' },
+          { icon: 'partial', text: 'Can build on shared data \u2014 but not all areas connected yet' },
+          { icon: 'yes', text: 'Approval process for AI use cases emerging (risk-zone model)' },
           { icon: 'no', text: 'Still limited ability to deploy to production autonomously' },
         ],
         tools: ['Databricks', 'Power BI', 'CoPilot'],
         maturity: { access: 2.5, governance: 2, ai: 2, value: 1.5 },
       },
       {
-        desc: 'Shared data layer forming. SCV established as System of Record for customer 360. Experience Management Platform foundation enables segment-based personalisation.',
+        desc: 'Shared data layer forming. A unified customer view is being established. The personalisation platform is enabling initial segment-based targeting.',
         capabilities: [
-          { icon: 'yes', text: 'Data products available via APIs from shared platform' },
-          { icon: 'yes', text: 'Single Customer View (SCV) providing unified customer 360' },
-          { icon: 'partial', text: 'Experience Management Platform: segment-based personalisation starting' },
-          { icon: 'partial', text: 'Common data model partially rolled out \u2014 priority entities first' },
-          { icon: 'partial', text: 'Reducing point-to-point integrations, content metadata SoR forming' },
+          { icon: 'yes', text: 'Reusable datasets available from the shared platform' },
+          { icon: 'yes', text: 'Unified customer view \u2014 one place to see the full customer picture' },
+          { icon: 'partial', text: 'Personalisation platform starting with audience segments' },
+          { icon: 'partial', text: 'Common data model partially rolled out \u2014 priority areas first' },
+          { icon: 'partial', text: 'Reducing one-off connections, content metadata being consolidated' },
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Power BI'],
         maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
       },
       {
-        desc: 'Migrating to shared Databricks platform. ML platform consolidating. Hub team providing core infrastructure and engineering support.',
+        desc: 'Migrating to shared Databricks platform. AI/ML infrastructure consolidating. Hub team providing core infrastructure and engineering support to all teams.',
         capabilities: [
-          { icon: 'yes', text: 'Single Databricks platform for data engineering and ML' },
-          { icon: 'partial', text: 'Shared feature store forming \u2014 initial ML models migrated' },
-          { icon: 'yes', text: 'Data governance framework established with ownership model' },
-          { icon: 'partial', text: 'CI/CD pipelines for model deployment being standardised' },
+          { icon: 'yes', text: 'Single Databricks platform for data engineering and AI/ML' },
+          { icon: 'partial', text: 'Shared library of reusable AI-ready data forming' },
+          { icon: 'yes', text: 'Data governance framework established \u2014 clear ownership model' },
+          { icon: 'partial', text: 'Automated deployment processes for AI models being standardised' },
           { icon: 'yes', text: 'Hub team providing advisory and engineering support to spokes' },
         ],
-        tools: ['Databricks', 'ML Platform', 'CI/CD Pipelines', 'Adobe CDP'],
+        tools: ['Databricks', 'AI/ML Platform', 'Deployment Automation', 'Adobe CDP'],
         maturity: { access: 3, governance: 2.5, ai: 2.5, value: 2 },
       },
       {
@@ -185,7 +185,7 @@ const PHASE_DETAILS = [
     label: 'FASE 3 \u00B7 TARGET STATE',
     tabLabel: 'Target State',
     title: 'Hub & Spoke Operating Model',
-    subtitle: 'Unified platform with clear spoke archetypes. Common ontology enforced via master data model. Self-service at scale. Governed AI with clear guardrails. Value-driven prioritisation of all data & AI initiatives. Experience Management Platform delivers user-specific personalisation. Experience Orchestration Layer enables headless omnichannel delivery.',
+    subtitle: 'One shared platform. One shared language for data. Everyone can access the data they need through self-service tools. AI is governed with clear rules for what\u2019s allowed. Every data & AI initiative is tied to measurable business value. Personalisation is user-specific and works consistently across all TV 2 channels.',
     personas: [
       {
         desc: 'Full self-service via governed tools. Trusted data with shared definitions. Can answer own questions without waiting for IT.',
@@ -197,7 +197,7 @@ const PHASE_DETAILS = [
           { icon: 'yes', text: 'AI-powered insights (CoPilot, natural language queries)' },
         ],
         tools: ['Power BI', 'Excel', 'CoPilot', 'Data Catalogue'],
-        spoke: 'Spoke "lille" \u2014 consumes governed data products',
+        spoke: 'Spoke "lille" (small) \u2014 uses shared data via self-service tools',
         maturity: { access: 3.5, governance: 3, ai: 3, value: 3 },
       },
       {
@@ -210,59 +210,59 @@ const PHASE_DETAILS = [
           { icon: 'yes', text: 'Shared feature store and data products to build upon' },
         ],
         tools: ['Databricks', 'AI Platform', 'CoPilot', 'Adobe Experience Platform'],
-        spoke: 'Spoke "mellem" \u2014 builds within governed framework',
+        spoke: 'Spoke "mellem" (medium) \u2014 builds solutions within guardrails',
         maturity: { access: 3.5, governance: 3, ai: 3.5, value: 3 },
       },
       {
-        desc: 'Consumes curated data products, customer 360, and centralised decisioning via governed APIs. Experience Orchestration Layer delivers headless personalisation across channels.',
+        desc: 'Consumes high-quality, shared datasets and a complete customer view. Personalisation decisions are centralised \u2014 all channels (Play, tv2.dk, etc.) get consistent, tailored experiences.',
         capabilities: [
-          { icon: 'yes', text: 'Governed APIs exposing curated data products and SCV customer 360' },
-          { icon: 'yes', text: 'Experience Management Platform: user-specific real-time personalisation' },
-          { icon: 'yes', text: 'Experience Orchestration Layer: headless omnichannel content delivery' },
-          { icon: 'yes', text: 'Common data model ensures consistent schemas across all channels' },
-          { icon: 'yes', text: 'ML model predictions and content recommendations as API services' },
+          { icon: 'yes', text: 'Shared datasets and a unified customer view available via standard interfaces' },
+          { icon: 'yes', text: 'Personalisation platform: tailored experiences per user in real time' },
+          { icon: 'yes', text: 'Content delivery works consistently across Play, tv2.dk, Sport, Vejr' },
+          { icon: 'yes', text: 'Common data model ensures the same definitions across all channels' },
+          { icon: 'yes', text: 'AI-powered content recommendations available as ready-to-use services' },
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Event Streaming'],
-        spoke: 'Spoke "lille/mellem" \u2014 integrates governed data products',
+        spoke: 'Spoke "lille/mellem" \u2014 integrates shared data into applications',
         maturity: { access: 3.5, governance: 3, ai: 3, value: 3.5 },
       },
       {
-        desc: 'Owns and operates the three-layer architecture: Data layer (platform & SSoT), Decision layer (EMP & orchestration), and Engagement layer integration. Drives capability for all spokes.',
+        desc: 'Owns and operates the full data & AI platform. Drives capability for all teams. Ensures the three layers (data, personalisation decisions, channels) work together seamlessly.',
         capabilities: [
-          { icon: 'yes', text: 'Full Databricks platform: lakehouse, ML, feature store, Unity Catalog' },
-          { icon: 'yes', text: 'End-to-end ML lifecycle: develop, deploy, monitor, retrain (MLOps)' },
-          { icon: 'yes', text: 'Data governance enforced via tooling (lineage, quality, federated ownership)' },
-          { icon: 'yes', text: 'Design Authority: CDM adherence, integration patterns, architecture decisions' },
-          { icon: 'yes', text: 'Hub services: advisory, engineering, enablement, platform ops' },
+          { icon: 'yes', text: 'Full Databricks platform: data storage, AI/ML, governance tooling' },
+          { icon: 'yes', text: 'Complete AI model lifecycle: develop, deploy, monitor, and improve' },
+          { icon: 'yes', text: 'Data governance enforced via tooling \u2014 clear ownership, quality tracking' },
+          { icon: 'yes', text: 'Architecture governance: ensures all teams follow shared standards' },
+          { icon: 'yes', text: 'Hub services: advisory, engineering support, training, platform operations' },
         ],
         tools: ['Databricks Unity Catalog', 'ML Platform', 'Adobe CDP', 'Governance Tooling'],
-        spoke: 'Spoke "stor" + Hub \u2014 owns platform, governs all',
+        spoke: 'Spoke "stor" (large) + Hub \u2014 owns the platform, sets standards',
         maturity: { access: 4, governance: 3.5, ai: 4, value: 3 },
       },
       {
-        desc: 'Builds non-customer-facing AI tools that enhance everyday work. Personal agents, workflow automations, and team-level AI solutions \u2014 all within governed "sikre zoner".',
+        desc: 'Builds internal AI tools that enhance everyday work. Personal AI assistants, workflow automations, and team-level solutions \u2014 all within safe zones ("sikre zoner").',
         capabilities: [
-          { icon: 'yes', text: 'Builds personal AI agents connected to governed TV 2 data' },
+          { icon: 'yes', text: 'Builds personal AI assistants connected to TV 2 data' },
           { icon: 'yes', text: 'Workflow automations via approved low-code AI tools' },
-          { icon: 'yes', text: 'Vibe coding for internal tools with governed data access' },
-          { icon: 'yes', text: 'Shares solutions with team via internal AI marketplace' },
-          { icon: 'yes', text: 'Clear risk framework: "sikre zoner" for internal, escalation path for "risikable"' },
+          { icon: 'yes', text: 'Vibe coding for internal tools with controlled data access' },
+          { icon: 'yes', text: 'Shares useful solutions with colleagues via internal marketplace' },
+          { icon: 'yes', text: 'Clear rules: safe zones for internal use, escalation path for risky use cases' },
         ],
         tools: ['CoPilot Agents', 'AI Workspace', 'Low-Code AI', 'Vibe Coding Tools'],
-        spoke: 'All spokes \u2014 builds within "sikre zoner"',
+        spoke: 'All teams \u2014 builds internal tools within safe zones',
         maturity: { access: 3, governance: 3, ai: 3.5, value: 3 },
       },
       {
-        desc: 'Operates the AI factory. Builds and maintains agent frameworks, LLM orchestration, and AI platform capabilities that all spokes consume.',
+        desc: 'Operates the AI factory. Builds and maintains reusable AI building blocks, so other teams can create AI solutions without starting from scratch.',
         capabilities: [
-          { icon: 'yes', text: 'Agent factory: reusable frameworks for building AI agents at scale' },
-          { icon: 'yes', text: 'LLM orchestration layer with model governance and cost control' },
-          { icon: 'yes', text: 'AI platform capabilities on Databricks: RAG, fine-tuning, evaluation' },
-          { icon: 'yes', text: 'Governed APIs for spoke teams to build on (MCP, tool use, etc.)' },
+          { icon: 'yes', text: 'Agent factory: ready-made templates for building AI assistants at scale' },
+          { icon: 'yes', text: 'AI model management with cost control and quality monitoring' },
+          { icon: 'yes', text: 'Advanced AI capabilities: search over documents, model customisation, testing' },
+          { icon: 'yes', text: 'Shared AI building blocks for all teams to build on' },
           { icon: 'yes', text: 'AI governance tooling: risk assessment, approval workflows, monitoring' },
         ],
-        tools: ['Databricks AI', 'Agent Framework', 'LLM Orchestration', 'MCP', 'AI Gov Tooling'],
-        spoke: 'Hub \u2014 builds the factory, enables all spokes',
+        tools: ['Databricks AI', 'Agent Framework', 'AI Model Management', 'AI Governance Tooling'],
+        spoke: 'Hub \u2014 builds the AI factory, enables all teams',
         maturity: { access: 4, governance: 3.5, ai: 4, value: 3.5 },
       },
     ],
@@ -312,12 +312,12 @@ const GLOSSARY = [
   {
     term: 'AI Governance',
     short: 'Risk framework and guardrails for AI usage',
-    detail: 'The framework for responsible AI adoption across TV 2. Includes the AI forum (strategic direction), AI risk group (risk assessment for "gule felt" use cases), and AI technology governance (model and tool approval). Defines clear zones: "sikre zoner" where AI use is encouraged, "risikable zoner" requiring case-by-case assessment, and "no-go zoner" (e.g., GenAI in news production). Ensures AI creates value without compromising TV 2\u2019s troværdighed.',
+    detail: 'The framework for responsible AI adoption across TV 2. Includes the AI forum (strategic direction), AI risk group (risk assessment for borderline use cases), and AI technology governance (model and tool approval). Defines clear zones: "sikre zoner" (safe zones) where AI use is encouraged, "risikable zoner" (risky zones) requiring case-by-case assessment, and "no-go zoner" (e.g., generative AI in news production). Ensures AI creates value without compromising TV 2\u2019s troværdighed (credibility/trustworthiness).',
   },
   {
     term: 'Sikre Zoner',
     short: 'Safe zones for AI \u2014 encouraged usage',
-    detail: 'Areas where AI can be used freely within general guidelines: internal efficiency, administrative automation, AI-assisted search, CoPilot for daily work, internal tool building. Non-customer-facing, low-risk applications. The Everyday AI Builder operates primarily in this zone. No case-by-case approval needed \u2014 just follow the published AI guidelines.',
+    detail: '"Sikre zoner" means "safe zones" \u2014 areas where AI can be used freely within general guidelines: internal efficiency, administrative automation, AI-assisted search, CoPilot for daily work, internal tool building. Non-customer-facing, low-risk applications. The Everyday AI Builder operates primarily in this zone. No case-by-case approval needed \u2014 just follow the published AI guidelines.',
   },
   {
     term: 'Self-Service',
@@ -331,13 +331,13 @@ const GLOSSARY = [
   },
   {
     term: 'Feature Store',
-    short: 'Shared repository of ML-ready features',
-    detail: 'A centralised store of pre-computed, reusable features (variables) for machine learning models. Ensures consistency between training and serving, reduces duplicated feature engineering across teams, and provides lineage and documentation. Part of the shared ML platform on Databricks.',
+    short: 'Shared library of AI-ready data',
+    detail: 'A centralised library of pre-prepared data variables that AI and machine learning models need. Think of it as a shared ingredient store: instead of each team preparing the same data from scratch, they use pre-made, quality-checked "features" (e.g., "customer\u2019s average viewing hours this week"). Ensures every AI model uses the same definitions, reduces duplicated work, and makes AI development faster.',
   },
   {
     term: 'Agent Factory',
-    short: 'Reusable frameworks for building AI agents at scale',
-    detail: 'The AI Platform Engineer\u2019s core deliverable: standardised frameworks, templates, and infrastructure for building, deploying, and monitoring AI agents. Includes LLM orchestration, tool-use patterns (MCP), evaluation pipelines, cost controls, and governance integration. Enables spoke teams to build agents without starting from scratch each time.',
+    short: 'Ready-made building blocks for AI assistants',
+    detail: 'The AI Platform Engineer\u2019s core deliverable: standardised templates and infrastructure for building AI assistants ("agents") that can perform tasks autonomously. Think of it as a well-stocked workshop: instead of each team building their AI tools from scratch, they pick from pre-built, tested, and governed components. Includes templates, cost controls, quality testing, and governance \u2014 so teams can build safely and quickly.',
   },
   {
     term: 'Value Realisation',
@@ -784,10 +784,11 @@ function VibeCodingPage() {
         <div className="phase-label" style={{ color: '#8b5cf6' }}>AI GOVERNANCE · VIBE CODING</div>
         <h1 className="phase-title">Where Can We Vibe Code?</h1>
         <p className="phase-subtitle">
-          Mapping each persona's vibe coding mandate against TV 2's AI risk framework.
-          The key principle: internal everyday tools are encouraged for everyone — but anything customer-facing
-          or game-changing requires governance, review, and professional oversight.
-          Non-professionals should never build customer-facing AI solutions.
+          "Vibe coding" means using AI tools (like CoPilot, Cursor, or GitHub Spark) to build software by describing what you want in plain language.
+          It{"'"}s a powerful capability — but it needs guardrails.
+          This page maps who can build what, and where the boundaries are.
+          The key principle: <strong>internal everyday tools are encouraged for everyone</strong> — but anything customer-facing
+          requires professional oversight. Non-IT staff should never build solutions that reach Danskerne.
         </p>
       </div>
 
@@ -1134,6 +1135,27 @@ function App() {
               <span className="tech-strip-item">Microsoft CoPilot</span>
             </div>
           </div>
+
+          <div className="personas-intro" onClick={e => e.stopPropagation()}>
+            <div className="personas-intro-text">
+              <strong>Six personas</strong> represent the different ways people at TV 2 work with data & AI.
+              You likely have several of these in your teams. The maturity scores show where we are today and where we{"'"}re heading.
+            </div>
+            <div className="maturity-legend">
+              <span className="maturity-legend-label">Maturity scale:</span>
+              <span className="maturity-legend-item" style={{ color: 'var(--accent-red)' }}>1 Ad-hoc</span>
+              <span className="maturity-legend-sep">{'\u2192'}</span>
+              <span className="maturity-legend-item" style={{ color: 'var(--accent-amber)' }}>2 Emerging</span>
+              <span className="maturity-legend-sep">{'\u2192'}</span>
+              <span className="maturity-legend-item" style={{ color: 'var(--accent-green)' }}>3 Defined</span>
+              <span className="maturity-legend-sep">{'\u2192'}</span>
+              <span className="maturity-legend-item" style={{ color: '#3b82f6' }}>4 Managed</span>
+              <span className="maturity-legend-sep">{'\u2192'}</span>
+              <span className="maturity-legend-item" style={{ color: '#6366f1' }}>5 Optimised</span>
+              <span className="maturity-legend-note">We target 3{'\u2013'}4. Levels 4{'\u2013'}5 are only relevant for core platform teams.</span>
+            </div>
+          </div>
+
           <div className="persona-grid">
             {PERSONAS.map((persona, i) => (
               <PersonaCard

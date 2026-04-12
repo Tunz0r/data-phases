@@ -563,6 +563,59 @@
   50% { opacity: 0.9; }
 }
 
+/* ========== PERSONAS INTRO ========== */
+.personas-intro {
+  max-width: 900px;
+  margin: 0 auto 16px;
+  padding: 14px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.personas-intro-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.personas-intro-text strong {
+  color: var(--text-primary);
+}
+
+.maturity-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.maturity-legend-label {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-right: 4px;
+}
+
+.maturity-legend-item {
+  font-weight: 600;
+}
+
+.maturity-legend-sep {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.maturity-legend-note {
+  display: block;
+  width: 100%;
+  color: var(--text-muted);
+  font-size: 10.5px;
+  margin-top: 4px;
+  font-style: italic;
+}
+
 /* ========== VIBE TAB ========== */
 .phase-tab.tab-vibe {
   border-left: 1px solid var(--border);
