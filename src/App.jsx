@@ -812,8 +812,14 @@ function VibeCodingPage() {
               with proper guardrails, you must not use vibe coding tools on TV 2 networks or TV 2 hardware.</strong>
             </p>
             <p>
-              This is not about slowing you down — it's about making sure we do this right.
-              Ungoverned AI tools can inadvertently expose proprietary data, create security vulnerabilities,
+              That said, we already have tools you can use today: <strong>GitHub Spark</strong> gives you access
+              to Anthropic's Claude models for building lightweight internal apps, and <strong>Microsoft CoPilot</strong> is
+              already available for everyday productivity — email, documents, meetings, and code assistance.
+              If you have access to these, you can already start exploring within "sikre zoner".
+            </p>
+            <p>
+              What we're asking is that you <strong>don't install or use ungoverned third-party vibe coding tools</strong> on
+              TV 2 infrastructure. Ungoverned AI tools can inadvertently expose proprietary data, create security vulnerabilities,
               or produce outputs that compromise our troværdighed toward Danskerne.
               We have seen this happen at other organisations and we want to learn from their mistakes, not repeat them.
             </p>
