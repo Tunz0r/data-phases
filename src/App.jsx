@@ -793,6 +793,100 @@ function VibeCodingPage() {
 
       <VibeMatrix />
 
+      <div className="vibe-comms" onClick={e => e.stopPropagation()}>
+        <div className="vibe-comms-header">
+          <span className="vibe-comms-badge">DRAFT COMMS</span>
+          <h2 className="vibe-comms-title">Suggested Internal Communication</h2>
+          <p className="vibe-comms-hint">Adapt this to TV 2's tone and distribute via appropriate channels</p>
+        </div>
+
+        <div className="vibe-comms-body">
+          <div className="vibe-comms-section vibe-comms-now">
+            <div className="vibe-comms-section-header">
+              <span className="vibe-comms-icon" style={{ background: 'rgba(239, 68, 68, 0.15)', color: '#ef4444' }}>!</span>
+              <h3>What applies right now</h3>
+            </div>
+            <p>
+              We know many of you are excited about AI-assisted coding tools — and we are too.
+              However, <strong>until we have selected and configured an approved vibe coding platform
+              with proper guardrails, you must not use vibe coding tools on TV 2 networks or TV 2 hardware.</strong>
+            </p>
+            <p>
+              This is not about slowing you down — it's about making sure we do this right.
+              Ungoverned AI tools can inadvertently expose proprietary data, create security vulnerabilities,
+              or produce outputs that compromise our troværdighed toward Danskerne.
+              We have seen this happen at other organisations and we want to learn from their mistakes, not repeat them.
+            </p>
+          </div>
+
+          <div className="vibe-comms-section vibe-comms-soon">
+            <div className="vibe-comms-section-header">
+              <span className="vibe-comms-icon" style={{ background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b' }}>&#8987;</span>
+              <h3>What we are building</h3>
+            </div>
+            <p>
+              We are actively evaluating platforms that will give you a <strong>governed, sandboxed environment</strong> where
+              you can safely experiment with vibe coding for internal tools and personal productivity.
+              The platform will include:
+            </p>
+            <ul className="vibe-comms-list">
+              <li><strong>Data access controls</strong> — so AI tools can only see data you're authorised to use</li>
+              <li><strong>Output boundaries</strong> — nothing you build can accidentally become customer-facing</li>
+              <li><strong>Approved model access</strong> — vetted LLMs that meet our security and privacy requirements</li>
+              <li><strong>Templates and examples</strong> — so you don't start from scratch but build on proven patterns</li>
+              <li><strong>A sharing mechanism</strong> — so great internal tools can benefit your colleagues too</li>
+            </ul>
+          </div>
+
+          <div className="vibe-comms-section vibe-comms-future">
+            <div className="vibe-comms-section-header">
+              <span className="vibe-comms-icon" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10b981' }}>&#10003;</span>
+              <h3>When the platform is ready</h3>
+            </div>
+            <p>
+              Once the governed platform is in place, we <strong>actively encourage</strong> everyone to explore
+              vibe coding for internal, everyday use cases. Building a personal agent that summarises your meetings?
+              Great. Automating a tedious reporting workflow? Absolutely. Creating an internal tool that helps
+              your team work smarter? That's exactly what we want.
+            </p>
+            <p>
+              The principle is simple: <strong>if it's internal and everyday — go for it.</strong> If it's
+              game-changing or customer-facing — talk to your Data & AI contact first. If it touches Danskerne directly — that's
+              a job for professionals with full governance.
+            </p>
+          </div>
+
+          <div className="vibe-comms-section vibe-comms-principles">
+            <div className="vibe-comms-section-header">
+              <span className="vibe-comms-icon" style={{ background: 'rgba(139, 92, 246, 0.15)', color: '#8b5cf6' }}>&#9733;</span>
+              <h3>The five principles of vibe coding at TV 2</h3>
+            </div>
+            <ol className="vibe-comms-principles-list">
+              <li>
+                <strong>Intern før ekstern.</strong> Build for yourself and your team first.
+                Nothing you vibe code should ever reach a customer without professional review.
+              </li>
+              <li>
+                <strong>Platform, ikke personlig maskine.</strong> Use the approved platform, not your personal setup.
+                This protects you, your data, and TV 2.
+              </li>
+              <li>
+                <strong>Byg videre, ikke forfra.</strong> Start from templates and examples.
+                The agent factory and shared patterns exist so you don't reinvent the wheel.
+              </li>
+              <li>
+                <strong>Del det gode.</strong> If you build something useful, share it.
+                The internal AI marketplace makes your colleagues' lives easier too.
+              </li>
+              <li>
+                <strong>Kend din zone.</strong> Check the risk matrix above.
+                If you're in a green zone, go ahead. Yellow means check first. Red means stop.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
       <div className="bottom-panel">
         <div className="persona-grid">
           {PERSONAS.map((persona, i) => (
