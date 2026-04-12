@@ -379,7 +379,7 @@
   justify-content: center;
   align-items: center;
   gap: 24px;
-  padding: 10px 0 6px;
+  padding: 20px 0 12px;
   opacity: 0.5;
 }
 
@@ -529,12 +529,12 @@
 }
 
 /* Backdrop when glossary detail is open */
-.glossary-term-wrapper:has(.glossary-detail)::before {
-  content: '';
+.glossary-backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 199;
+  cursor: pointer;
 }
 
 /* ========== CLICK HINT ========== */

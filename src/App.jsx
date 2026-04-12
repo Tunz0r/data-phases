@@ -378,6 +378,7 @@ const GLOSSARY = [
 
 function Glossary() {
   const [openTerm, setOpenTerm] = useState(null)
+  const openItem = openTerm ? GLOSSARY.find(g => g.term === openTerm) : null
 
   return (
     <div className="glossary" onClick={e => e.stopPropagation()}>
@@ -395,15 +396,18 @@ function Glossary() {
               <span className="glossary-chip-term">{item.term}</span>
               <span className="glossary-chip-short">{item.short}</span>
             </button>
-            {openTerm === item.term && (
-              <div className="glossary-detail">
-                <div className="glossary-detail-title">{item.term}</div>
-                <div className="glossary-detail-text">{item.detail}</div>
-              </div>
-            )}
           </div>
         ))}
       </div>
+      {openItem && (
+        <>
+          <div className="glossary-backdrop" onClick={e => { e.stopPropagation(); setOpenTerm(null) }} />
+          <div className="glossary-detail" onClick={e => e.stopPropagation()}>
+            <div className="glossary-detail-title">{openItem.term}</div>
+            <div className="glossary-detail-text">{openItem.detail}</div>
+          </div>
+        </>
+      )}
     </div>
   )
 }
