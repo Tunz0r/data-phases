@@ -59,7 +59,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'Cannot combine data across departments' },
         ],
         tools: ['Excel', 'Email', 'SharePoint'],
-        maturity: { access: 1, governance: 1, ai: 1, value: 1 },
+        maturity: { access: 0.5, governance: 0.5, ai: 0.5, value: 0.5 },
       },
       {
         desc: 'Wants to build data-driven solutions but ends up creating shadow IT. No shared platform or reusable data to build on.',
@@ -71,7 +71,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'Can\u2019t put solutions into production \u2014 relies on IT for deployment' },
         ],
         tools: ['Excel', 'Local Python', 'Shadow IT tools'],
-        maturity: { access: 1.5, governance: 1, ai: 1, value: 1 },
+        maturity: { access: 1, governance: 0.5, ai: 0.5, value: 0.5 },
       },
       {
         desc: 'Builds applications that need data, but must connect to fragmented sources one by one. No unified data layer, no complete customer view, and no shared personalisation logic.',
@@ -83,7 +83,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'No shared personalisation \u2014 each channel (Play, tv2.dk, etc.) builds its own' },
         ],
         tools: ['Custom APIs', 'Direct DB queries', 'FTP transfers'],
-        maturity: { access: 1.5, governance: 1, ai: 1, value: 1.5 },
+        maturity: { access: 1, governance: 0.5, ai: 0.5, value: 1 },
       },
       {
         desc: 'Maintains separate platforms across teams. Data engineers duplicate work. AI/ML engineers lack shared infrastructure.',
@@ -95,7 +95,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'No standard way to deploy or monitor AI models in production' },
         ],
         tools: ['Multiple clouds', 'Team-specific DBs', 'Ad-hoc notebooks'],
-        maturity: { access: 2, governance: 1, ai: 2, value: 1 },
+        maturity: { access: 1.5, governance: 0.5, ai: 1.5, value: 0.5 },
       },
       {
         desc: 'Interested in AI but no tools or guidance. Uses free ChatGPT on personal devices. No way to build anything that connects to TV 2 data or processes.',
@@ -107,7 +107,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'No way to share useful AI solutions with colleagues' },
         ],
         tools: ['CoPilot (basic)', 'Free ChatGPT'],
-        maturity: { access: 1, governance: 0.5, ai: 1, value: 0.5 },
+        maturity: { access: 0.5, governance: 0, ai: 0.5, value: 0 },
       },
       {
         desc: 'AI capabilities scattered across teams. No shared agent framework or platform. Each team experiments with different LLM providers and approaches.',
@@ -119,7 +119,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'No reusable components \u2014 every AI project starts from scratch' },
         ],
         tools: ['Ad-hoc LLM APIs', 'Team experiments', 'No shared infra'],
-        maturity: { access: 1.5, governance: 0.5, ai: 1.5, value: 0.5 },
+        maturity: { access: 1, governance: 0, ai: 1, value: 0 },
       },
     ],
   },
@@ -139,7 +139,7 @@ const PHASES_EN = [
           { icon: 'partial', text: 'Cross-department data combining possible for priority domains' },
         ],
         tools: ['Power BI', 'Excel', 'Data Catalogue'],
-        maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
+        maturity: { access: 2, governance: 1.5, ai: 1, value: 1.5 },
         tempo: 'analytics',
       },
       {
@@ -152,7 +152,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'Still limited ability to deploy to production autonomously' },
         ],
         tools: ['Databricks', 'Power BI', 'CoPilot'],
-        maturity: { access: 2.5, governance: 2, ai: 2, value: 1.5 },
+        maturity: { access: 2, governance: 1.5, ai: 1.5, value: 1 },
         tempo: 'analytics',
       },
       {
@@ -165,7 +165,7 @@ const PHASES_EN = [
           { icon: 'partial', text: 'Reducing one-off connections, content metadata being consolidated' },
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Power BI'],
-        maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
+        maturity: { access: 2, governance: 1.5, ai: 1, value: 1.5 },
         tempo: 'both',
       },
       {
@@ -178,7 +178,7 @@ const PHASES_EN = [
           { icon: 'yes', text: 'Hub team providing advisory and engineering support to spokes' },
         ],
         tools: ['Databricks', 'AI/ML Platform', 'Deployment Automation', 'Adobe CDP'],
-        maturity: { access: 3, governance: 2.5, ai: 2.5, value: 2 },
+        maturity: { access: 2.5, governance: 2, ai: 2, value: 1.5 },
         tempo: 'both',
       },
       {
@@ -191,7 +191,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'Cannot yet connect AI tools to governed TV 2 data' },
         ],
         tools: ['CoPilot', 'CoPilot Agents', 'Approved AI Tools'],
-        maturity: { access: 2, governance: 2, ai: 2, value: 1.5 },
+        maturity: { access: 1.5, governance: 1.5, ai: 1.5, value: 1 },
       },
       {
         desc: 'Building out AI platform capabilities on Databricks. Initial agent framework emerging. Starting to standardise LLM integration patterns.',
@@ -203,7 +203,7 @@ const PHASES_EN = [
           { icon: 'no', text: 'Agent factory not yet production-ready for spoke teams' },
         ],
         tools: ['Databricks', 'LLM APIs', 'Agent Framework (pilot)', 'AI Governance'],
-        maturity: { access: 2.5, governance: 2.5, ai: 2.5, value: 2 },
+        maturity: { access: 2, governance: 2, ai: 2, value: 1.5 },
         tempo: 'both',
       },
     ],
@@ -225,7 +225,7 @@ const PHASES_EN = [
         ],
         tools: ['Power BI', 'Excel', 'CoPilot', 'Data Catalogue'],
         spoke: 'Spoke \u201clille\u201d (small) \u2014 uses shared data via self-service tools',
-        maturity: { access: 3.5, governance: 3, ai: 3, value: 3 },
+        maturity: { access: 3, governance: 2.5, ai: 2.5, value: 2.5 },
         tempo: 'analytics',
       },
       {
@@ -239,7 +239,7 @@ const PHASES_EN = [
         ],
         tools: ['Databricks', 'AI Platform', 'CoPilot', 'Adobe Experience Platform'],
         spoke: 'Spoke \u201cmellem\u201d (medium) \u2014 builds solutions within guardrails',
-        maturity: { access: 3.5, governance: 3, ai: 3.5, value: 3 },
+        maturity: { access: 3, governance: 2.5, ai: 3, value: 2.5 },
         tempo: 'analytics',
       },
       {
@@ -253,7 +253,7 @@ const PHASES_EN = [
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Event Streaming'],
         spoke: 'Spoke \u201clille/mellem\u201d \u2014 integrates shared data into applications',
-        maturity: { access: 3.5, governance: 3, ai: 3, value: 3.5 },
+        maturity: { access: 3, governance: 2.5, ai: 2.5, value: 3 },
         tempo: 'both',
       },
       {
@@ -267,7 +267,7 @@ const PHASES_EN = [
         ],
         tools: ['Databricks Unity Catalog', 'ML Platform', 'Adobe CDP', 'Governance Tooling'],
         spoke: 'Spoke \u201cstor\u201d (large) + Hub \u2014 owns the platform, sets standards',
-        maturity: { access: 4, governance: 3.5, ai: 4, value: 3 },
+        maturity: { access: 3.5, governance: 3, ai: 3.5, value: 2.5 },
         tempo: 'both',
       },
       {
@@ -281,7 +281,7 @@ const PHASES_EN = [
         ],
         tools: ['CoPilot Agents', 'AI Workspace', 'Low-Code AI', 'Vibe Coding Tools'],
         spoke: 'All teams \u2014 builds internal tools within safe zones',
-        maturity: { access: 3, governance: 3, ai: 3.5, value: 3 },
+        maturity: { access: 2.5, governance: 2.5, ai: 3, value: 2.5 },
       },
       {
         desc: 'Operates the AI factory. Builds and maintains reusable AI building blocks, so other teams can create AI solutions without starting from scratch.',
@@ -294,7 +294,7 @@ const PHASES_EN = [
         ],
         tools: ['Databricks AI', 'Agent Framework', 'AI Model Management', 'AI Governance Tooling'],
         spoke: 'Hub \u2014 builds the AI factory, enables all teams',
-        maturity: { access: 4, governance: 3.5, ai: 4, value: 3.5 },
+        maturity: { access: 3.5, governance: 3, ai: 3.5, value: 3 },
         tempo: 'operational',
       },
     ],
@@ -318,7 +318,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Kan ikke kombinere data p\u00e5 tv\u00e6rs af afdelinger' },
         ],
         tools: ['Excel', 'Email', 'SharePoint'],
-        maturity: { access: 1, governance: 1, ai: 1, value: 1 },
+        maturity: { access: 0.5, governance: 0.5, ai: 0.5, value: 0.5 },
       },
       {
         desc: 'Vil gerne bygge datadrevne l\u00f8sninger, men ender med at skabe shadow IT. Ingen f\u00e6lles platform eller genbrugelige data at bygge p\u00e5.',
@@ -330,7 +330,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Kan ikke s\u00e6tte l\u00f8sninger i produktion \u2014 afh\u00e6nger af IT' },
         ],
         tools: ['Excel', 'Local Python', 'Shadow IT tools'],
-        maturity: { access: 1.5, governance: 1, ai: 1, value: 1 },
+        maturity: { access: 1, governance: 0.5, ai: 0.5, value: 0.5 },
       },
       {
         desc: 'Bygger applikationer der har brug for data, men skal forbinde til fragmenterede kilder \u00e9n ad gangen. Intet samlet datalag, intet komplet kundebillede og ingen f\u00e6lles personaliseringslogik.',
@@ -342,7 +342,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Ingen f\u00e6lles personalisering \u2014 hver kanal (Play, tv2.dk, osv.) bygger sin egen' },
         ],
         tools: ['Custom APIs', 'Direct DB queries', 'FTP transfers'],
-        maturity: { access: 1.5, governance: 1, ai: 1, value: 1.5 },
+        maturity: { access: 1, governance: 0.5, ai: 0.5, value: 1 },
       },
       {
         desc: 'Vedligeholder separate platforme p\u00e5 tv\u00e6rs af teams. Data engineers duplikerer arbejde. AI/ML-ingeni\u00f8rer mangler f\u00e6lles infrastruktur.',
@@ -354,7 +354,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Ingen standardiseret m\u00e5de at deploye eller monitorere AI-modeller i produktion' },
         ],
         tools: ['Multiple clouds', 'Team-specific DBs', 'Ad-hoc notebooks'],
-        maturity: { access: 2, governance: 1, ai: 2, value: 1 },
+        maturity: { access: 1.5, governance: 0.5, ai: 1.5, value: 0.5 },
       },
       {
         desc: 'Interesseret i AI men ingen v\u00e6rkt\u00f8jer eller vejledning. Bruger gratis ChatGPT p\u00e5 personlige enheder. Ingen mulighed for at bygge noget der forbinder til TV 2-data.',
@@ -366,7 +366,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Ingen mulighed for at dele nyttige AI-l\u00f8sninger med kolleger' },
         ],
         tools: ['CoPilot (basic)', 'Free ChatGPT'],
-        maturity: { access: 1, governance: 0.5, ai: 1, value: 0.5 },
+        maturity: { access: 0.5, governance: 0, ai: 0.5, value: 0 },
       },
       {
         desc: 'AI-kapaciteter spredt p\u00e5 tv\u00e6rs af teams. Ingen f\u00e6lles agent-framework eller platform. Hvert team eksperimenterer med forskellige LLM-udbydere.',
@@ -378,7 +378,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Ingen genbrugelige komponenter \u2014 hvert AI-projekt starter fra bunden' },
         ],
         tools: ['Ad-hoc LLM APIs', 'Team experiments', 'No shared infra'],
-        maturity: { access: 1.5, governance: 0.5, ai: 1.5, value: 0.5 },
+        maturity: { access: 1, governance: 0, ai: 1, value: 0 },
       },
     ],
   },
@@ -398,7 +398,7 @@ const PHASES_DA = [
           { icon: 'partial', text: 'Kombination af data p\u00e5 tv\u00e6rs af afdelinger muligt for prioriterede dom\u00e6ner' },
         ],
         tools: ['Power BI', 'Excel', 'Data Catalogue'],
-        maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
+        maturity: { access: 2, governance: 1.5, ai: 1, value: 1.5 },
         tempo: 'analytics',
       },
       {
@@ -411,7 +411,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Stadig begr\u00e6nset mulighed for selvst\u00e6ndigt at deploye til produktion' },
         ],
         tools: ['Databricks', 'Power BI', 'CoPilot'],
-        maturity: { access: 2.5, governance: 2, ai: 2, value: 1.5 },
+        maturity: { access: 2, governance: 1.5, ai: 1.5, value: 1 },
         tempo: 'analytics',
       },
       {
@@ -424,7 +424,7 @@ const PHASES_DA = [
           { icon: 'partial', text: 'Reducerer enkelst\u00e5ende forbindelser, indholdsmetadata konsolideres' },
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Power BI'],
-        maturity: { access: 2.5, governance: 2, ai: 1.5, value: 2 },
+        maturity: { access: 2, governance: 1.5, ai: 1, value: 1.5 },
         tempo: 'both',
       },
       {
@@ -437,7 +437,7 @@ const PHASES_DA = [
           { icon: 'yes', text: 'Hub-teamet leverer r\u00e5dgivning og engineering-support til spokes' },
         ],
         tools: ['Databricks', 'AI/ML Platform', 'Deployment Automation', 'Adobe CDP'],
-        maturity: { access: 3, governance: 2.5, ai: 2.5, value: 2 },
+        maturity: { access: 2.5, governance: 2, ai: 2, value: 1.5 },
         tempo: 'both',
       },
       {
@@ -450,7 +450,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Kan endnu ikke forbinde AI-v\u00e6rkt\u00f8jer til governed TV 2-data' },
         ],
         tools: ['CoPilot', 'CoPilot Agents', 'Approved AI Tools'],
-        maturity: { access: 2, governance: 2, ai: 2, value: 1.5 },
+        maturity: { access: 1.5, governance: 1.5, ai: 1.5, value: 1 },
       },
       {
         desc: 'Bygger AI-platformskapaciteter p\u00e5 Databricks. Indledende agent-framework tager form. Begynder at standardisere LLM-integrationsm\u00f8nstre.',
@@ -462,7 +462,7 @@ const PHASES_DA = [
           { icon: 'no', text: 'Agent factory endnu ikke produktionsklar for spoke-teams' },
         ],
         tools: ['Databricks', 'LLM APIs', 'Agent Framework (pilot)', 'AI Governance'],
-        maturity: { access: 2.5, governance: 2.5, ai: 2.5, value: 2 },
+        maturity: { access: 2, governance: 2, ai: 2, value: 1.5 },
         tempo: 'both',
       },
     ],
@@ -484,7 +484,7 @@ const PHASES_DA = [
         ],
         tools: ['Power BI', 'Excel', 'CoPilot', 'Data Catalogue'],
         spoke: 'Spoke \u201clille\u201d \u2014 bruger f\u00e6lles data via selvbetjeningsv\u00e6rkt\u00f8jer',
-        maturity: { access: 3.5, governance: 3, ai: 3, value: 3 },
+        maturity: { access: 3, governance: 2.5, ai: 2.5, value: 2.5 },
         tempo: 'analytics',
       },
       {
@@ -498,7 +498,7 @@ const PHASES_DA = [
         ],
         tools: ['Databricks', 'AI Platform', 'CoPilot', 'Adobe Experience Platform'],
         spoke: 'Spoke \u201cmellem\u201d \u2014 bygger l\u00f8sninger inden for rammerne',
-        maturity: { access: 3.5, governance: 3, ai: 3.5, value: 3 },
+        maturity: { access: 3, governance: 2.5, ai: 3, value: 2.5 },
         tempo: 'analytics',
       },
       {
@@ -512,7 +512,7 @@ const PHASES_DA = [
         ],
         tools: ['Databricks APIs', 'Adobe Experience Platform', 'Event Streaming'],
         spoke: 'Spoke \u201clille/mellem\u201d \u2014 integrerer f\u00e6lles data i applikationer',
-        maturity: { access: 3.5, governance: 3, ai: 3, value: 3.5 },
+        maturity: { access: 3, governance: 2.5, ai: 2.5, value: 3 },
         tempo: 'both',
       },
       {
@@ -526,7 +526,7 @@ const PHASES_DA = [
         ],
         tools: ['Databricks Unity Catalog', 'ML Platform', 'Adobe CDP', 'Governance Tooling'],
         spoke: 'Spoke \u201cstor\u201d + Hub \u2014 ejer platformen, s\u00e6tter standarder',
-        maturity: { access: 4, governance: 3.5, ai: 4, value: 3 },
+        maturity: { access: 3.5, governance: 3, ai: 3.5, value: 2.5 },
         tempo: 'both',
       },
       {
@@ -540,7 +540,7 @@ const PHASES_DA = [
         ],
         tools: ['CoPilot Agents', 'AI Workspace', 'Low-Code AI', 'Vibe Coding Tools'],
         spoke: 'Alle teams \u2014 bygger interne v\u00e6rkt\u00f8jer inden for sikre zoner',
-        maturity: { access: 3, governance: 3, ai: 3.5, value: 3 },
+        maturity: { access: 2.5, governance: 2.5, ai: 3, value: 2.5 },
       },
       {
         desc: 'Driver AI-fabrikken. Bygger og vedligeholder genbrugelige AI-byggeblokke, s\u00e5 andre teams kan skabe AI-l\u00f8sninger uden at starte fra bunden.',
@@ -553,7 +553,7 @@ const PHASES_DA = [
         ],
         tools: ['Databricks AI', 'Agent Framework', 'AI Model Management', 'AI Governance Tooling'],
         spoke: 'Hub \u2014 bygger AI-fabrikken, enabler alle teams',
-        maturity: { access: 4, governance: 3.5, ai: 4, value: 3.5 },
+        maturity: { access: 3.5, governance: 3, ai: 3.5, value: 3 },
         tempo: 'operational',
       },
     ],
@@ -949,7 +949,7 @@ const UI_EN = {
   clickForDetails: 'Click a term for details',
   maturityScale: 'Maturity scale:',
   levels: ['1 Ad-hoc', '2 Emerging', '3 Defined', '4 Managed', '5 Optimised'],
-  maturityNote: 'We target 3\u20134. Levels 4\u20135 are only relevant for core platform teams.',
+  maturityNote: 'We target 2.5\u20133.5. Levels 4\u20135 are only relevant for core platform teams.',
   personasIntroA: 'Six personas',
   personasIntroB: ' represent the different ways people at TV 2 work with data & AI. You likely have several of these in your teams. The maturity scores show where we are today and where we\u2019re heading.',
   phaseLabels: ['FASE 1', 'FASE 2', 'FASE 3'],
@@ -974,7 +974,7 @@ const UI_DA = {
   clickForDetails: 'Klik p\u00e5 et begreb for detaljer',
   maturityScale: 'Modenhedsskala:',
   levels: ['1 Ad-hoc', '2 Begyndende', '3 Defineret', '4 Styret', '5 Optimeret'],
-  maturityNote: 'Vi sigter mod 3\u20134. Niveau 4\u20135 er kun relevant for centrale platformhold.',
+  maturityNote: 'Vi sigter mod 2.5\u20133.5. Niveau 4\u20135 er kun relevant for centrale platformhold.',
   personasIntroA: 'Seks personas',
   personasIntroB: ' repr\u00e6senterer de forskellige m\u00e5der, folk hos TV 2 arbejder med data & AI. Du har sandsynligvis flere af disse i dine teams. Modenhedsscorerne viser, hvor vi er i dag, og hvor vi er p\u00e5 vej hen.',
   phaseLabels: ['FASE 1', 'FASE 2', 'FASE 3'],
