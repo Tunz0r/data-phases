@@ -73,7 +73,7 @@ function getPhase1Positions(cx, cy) {
 }
 
 function getPhase2Positions(cx, cy) {
-  const r = 210
+  const r = 230
   const angles = [-Math.PI / 2, -Math.PI / 6, Math.PI / 6, Math.PI / 2, 5 * Math.PI / 6, -5 * Math.PI / 6]
   return {
     personas: angles.map(a => ({
@@ -457,7 +457,7 @@ function App() {
       : getPhase2Positions(cx, cy)
 
   const data = t.phases[phase]
-  const bubbleR = 42
+  const bubbleR = 58
   const spokeLabels = ['SPOKE LILLE', 'SPOKE MELLEM', 'SPOKE LILLE/MELLEM', 'SPOKE STOR', 'ALLE SPOKES', 'HUB']
 
   return (
@@ -651,17 +651,17 @@ function App() {
                       stroke={persona.color}
                       strokeWidth={2}
                     />
-                    <text x={pos.x} y={pos.y - 12} textAnchor="middle" fontSize="20" dominantBaseline="central">
+                    <text x={pos.x} y={pos.y - 18} textAnchor="middle" fontSize="22" dominantBaseline="central">
                       {persona.icon}
                     </text>
-                    <text x={pos.x} y={pos.y + 12} className="persona-label" fontSize="11">
+                    <text x={pos.x} y={pos.y + 8} className="persona-label" fontSize="12.5">
                       {persona.label}
                     </text>
-                    <text x={pos.x} y={pos.y + 24} className="persona-sublabel" fontSize="8.5">
+                    <text x={pos.x} y={pos.y + 22} className="persona-sublabel" fontSize="7.5">
                       {persona.sublabel}
                     </text>
                     {phase === 2 && (
-                      <text x={pos.x} y={pos.y + 36} fontSize="8" fontWeight="700"
+                      <text x={pos.x} y={pos.y + 35} fontSize="8.5" fontWeight="700"
                         fill={persona.color} textAnchor="middle" fontFamily="var(--sans)">
                         {spokeLabels[i]}
                       </text>
