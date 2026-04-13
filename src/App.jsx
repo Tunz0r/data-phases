@@ -719,7 +719,7 @@ function App() {
 
   const data = t.phases[phase]
   const bubbleR = 58
-  const spokeLabels = ['SPOKE LILLE', 'SPOKE MELLEM', 'SPOKE LILLE/MELLEM', 'SPOKE STOR', 'ALLE SPOKES', 'PRODUKTTEAMS']
+  const spokeLabels = ['SPOKE LILLE', 'SPOKE MELLEM', 'SPOKE LILLE/MELLEM', 'HUB + CX TEAM', 'ALLE SPOKES', 'PRODUKTTEAMS']
 
   return (
     <LangContext.Provider value={{ lang, setLang, t }}>
