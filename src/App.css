@@ -970,8 +970,12 @@
 }
 
 /* ========== PLATFORM PAGE ========== */
+.platform-page {
+  padding: 20px 12px 0;
+}
+
 .platform-diagram {
-  max-width: 1100px;
+  width: 100%;
   margin: 0 auto 24px;
 }
 
@@ -979,6 +983,7 @@
   width: 100%;
   height: auto;
   overflow: visible;
+  display: block;
 }
 
 .platform-cards {

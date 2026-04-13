@@ -407,7 +407,7 @@ function PlatformPage() {
   const pp = t.platformPage
 
   return (
-    <div className="main-content" style={{ cursor: 'default' }}>
+    <div className="main-content platform-page" style={{ cursor: 'default' }}>
       <div className="phase-header">
         <div className="phase-label" style={{ color: '#06b6d4' }}>{pp.label}</div>
         <h1 className="phase-title">{pp.title}</h1>
