@@ -449,7 +449,7 @@ function App() {
     setPhase(p => (p + 1) % 3)
   }, [])
 
-  const cx = 550, cy = 250
+  const cx = 550, cy = 290
   const positions = phase === 0
     ? getPhase0Positions(cx, cy)
     : phase === 1
@@ -499,7 +499,7 @@ function App() {
         {/* SVG Visualization */}
         <div className="viz-section">
           <div className="viz-container">
-            <svg className="viz-svg" viewBox="-20 0 1140 500">
+            <svg className="viz-svg" viewBox="-20 -20 1140 620">
               <defs>
                 <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor="#10b98120" />
