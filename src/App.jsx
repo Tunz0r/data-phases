@@ -118,9 +118,9 @@ function ChaosLines({ positions }) {
 // MATURITY BAR
 // ────────────────────────────────────────────
 
-function MaturityBar({ value, max = 5, color }) {
+function MaturityBar({ value, max = 5 }) {
   const pct = (value / max) * 100
-  const barColor = value <= 1.5 ? 'var(--accent-red)' : value <= 2.5 ? 'var(--accent-amber)' : color || 'var(--accent-green)'
+  const barColor = value <= 1.5 ? 'var(--accent-red)' : value <= 2.5 ? 'var(--accent-amber)' : 'var(--accent-green)'
   return (
     <div className="maturity-bar-track">
       <div className="maturity-bar-fill" style={{ width: `${pct}%`, background: barColor }} />
@@ -167,7 +167,7 @@ function PersonaCard({ persona, detail, colorIndex }) {
           {t.maturityDims.map(dim => (
             <div key={dim.key} className="maturity-row">
               <span className="maturity-label">{dim.label}</span>
-              <MaturityBar value={detail.maturity[dim.key]} color={persona.color} />
+              <MaturityBar value={detail.maturity[dim.key]} />
               <span className="maturity-value">{detail.maturity[dim.key]}</span>
             </div>
           ))}
