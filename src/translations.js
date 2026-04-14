@@ -997,17 +997,21 @@ const UI_DA = {
 const PLATFORM_PAGE_EN = {
   label: 'WORK IN PROGRESS',
   title: 'Data Platform & Integration Platform',
-  subtitle: 'Two distinct platforms that work together. The data platform stores, transforms, and serves data. The integration platform connects systems. They are architecturally separate with different owners, technologies, and purposes.',
+  subtitle: 'Two distinct platforms owned by two domains within the Hub. The Data domain owns the data platform (storage, transformation, serving). The Tech Enabling domain owns the integration platform and developer infrastructure. Enterprise Architecture sets principles across both. Other domains are consumers and producers.',
 
-  principlesBar: 'ARCHITECTURE PRINCIPLES · DATA GOVERNANCE · SECURITY & PRIVACY',
-  principlesOwner: 'Owned by Enterprise Architecture',
+  // Domain 4: Enterprise Architecture (top banner)
+  eaDomainTitle: 'ENTERPRISE ARCHITECTURE',
+  eaDomainDesc: 'Architecture principles · Data governance · Security & privacy',
+  eaDomainLabel: 'Domain 4 — sets standards across all platforms',
 
-  dataPlatformTitle: 'Data Platform',
-  dataPlatformTech: 'Databricks · lakehouse architecture',
+  // Domain 2: Data (left side)
+  dataDomainTitle: 'Data Platform',
+  dataDomainTech: 'Databricks · lakehouse architecture',
+  dataDomainLabel: 'DOMAIN 2 — DATA (DATA FOUNDATION)',
 
   hubTitle: 'Hub — Data Foundation',
   hubDesc: 'Master data, ontology, common data models, data products',
-  hubOwner: 'Owner: Data Foundation domain',
+  hubOwner: 'Owner: Data domain (Data Foundation)',
   hubTech: 'Databricks Unity Catalog · Delta Lake · dbt',
   hubTech2: 'Medallion architecture (bronze / silver / gold)',
 
@@ -1015,7 +1019,7 @@ const PLATFORM_PAGE_EN = {
   analyticsDesc: 'Batch processing · historical analysis',
   analyticsTech: 'Power BI · Excel · Databricks SQL',
   analyticsTech2: 'Dashboards · reports · ad-hoc queries',
-  analyticsConsumers: 'All personas consume analytics',
+  analyticsConsumers: 'All domains consume analytics',
 
   operationalTempo: 'Operational Tempo',
   operationalDesc: 'Streaming · near real-time · personalisation',
@@ -1023,70 +1027,83 @@ const PLATFORM_PAGE_EN = {
   operationalTech2: 'Adobe Experience Platform · real-time decisioning',
   operationalConsumers: 'Feeds personalisation & viewer experience',
 
-  spokesTitle: 'Spoke Teams — Domain-Owned Data Products',
-  spokesDesc: 'Each spoke builds and owns their own data products, following hub standards',
-  spokeExamples: ['Content & Editorial', 'Ads & Revenue', 'Viewer & Subs'],
-  spokesOwner: 'Spokes own their data — Hub owns the platform & standards',
+  // Domain 1: Tech Enabling (right side)
+  techDomainTitle: 'Tech Enabling Platform',
+  techDomainDesc: 'Infrastructure · integration · developer platforms',
+  techDomainLabel: 'DOMAIN 1 — TECH ENABLING',
 
   integrationPlatformTitle: 'Integration Platform',
-  integrationPlatformTech: 'Technology: TBD (under evaluation)',
-
   apiGatewayTitle: 'API Gateway',
-  apiGatewayDesc: 'System-to-system communication',
   apiGatewayDesc2: 'REST, GraphQL, service mesh',
-  apiGatewayTech: '⚠️ Technology TBD',
-
+  apiGatewayTech: '\u26A0\uFE0F Technology TBD',
   eventBusTitle: 'Event Bus',
-  eventBusDesc: 'Async event-driven architecture',
   eventBusDesc2: 'Pub/sub, event streaming, CDC',
-  eventBusTech: '⚠️ Technology TBD',
-
-  intCapTitle: 'Integration Capabilities',
+  eventBusTech: '\u26A0\uFE0F Technology TBD',
   intCapDesc: 'Data ingestion · CDC · API management · event routing',
-  intCapDesc2: 'Connects source systems to data platform and between applications',
 
-  techEnablingTitle: 'Tech Enabling Domain',
-  techEnablingDesc: 'Owns and operates the integration platform — tooling, standards, and support',
+  devPlatTitle: 'Developer Platforms',
+  devPlatDesc: 'CI/CD · container platforms · IaC',
+  devPlatTech: 'GitHub · ArgoCD · Kubernetes',
+  devPlatTech2: 'Shared toolchains & golden paths',
 
-  productTeamsTitle: 'Product Teams (Consumers & Producers)',
-  productTeamsDesc: 'Product teams use the integration platform to connect their systems',
-  productTeamsExamples: 'TV 2 Play · News · Sport · Ads · Subscriptions',
+  obsSecTitle: 'Observability & Security',
+  obsSecDesc: 'Monitoring · logging · alerting · IAM',
+  obsSecTech: 'Datadog / Grafana · Vault · SSO',
+  obsSecTech2: 'Cross-platform visibility & compliance',
 
-  flowLabel: 'DATA FLOW',
+  // Domain 3: Other Domains (consumers in both platforms)
+  otherDomainsTitle: 'Other Domains (Data Consumers & Producers)',
+  otherDomainsDesc: 'Build and own domain data products following hub standards',
+  otherDomainsExamples: ['Content & Editorial', 'Ads & Revenue', 'Viewer & Subs'],
+
+  otherDomainsIntTitle: 'Other Domains (Integration Consumers)',
+  otherDomainsIntDesc: 'Use integration platform to connect systems and exchange data',
+  otherDomainsIntExamples: 'TV 2 Play · News · Sport · Ads · Subscriptions',
+
+  // Arrows
+  flowLabelOut: 'data out',
+  flowLabelIn: 'data in',
   flowToSpokes: 'ingested data',
+
+  // Callout
   notSameWarning: 'These are NOT the same platform',
   notSameDesc: 'Different owners · Different technology · Different purpose · Architecturally separate',
 
-  legendData: 'Data Platform (Databricks)',
-  legendIntegration: 'Integration Platform (TBD)',
-  legendPrinciples: 'Enterprise Architecture',
-  legendFlow: 'Data flow / interop',
-  legendTbd: 'Technology undecided',
+  // Legend
+  legendTitle: 'DOMAINS',
+  legendData: 'Data (Data Foundation)',
+  legendTech: 'Tech Enabling',
+  legendOther: 'Other Domains',
+  legendEA: 'Enterprise Architecture',
 
   cards: [
-    { icon: '🏛️', color: '#10b981', title: 'Data Foundation owns the Hub', desc: 'Master data, common ontology, data products catalog, and platform standards. But not the entire data platform — spokes own their domain data.' },
-    { icon: '🔧', color: '#3b82f6', title: 'Tech Enabling owns Integration', desc: 'The integration platform is a separate concern — API gateway, event bus, system connectivity. Technology stack is under evaluation.' },
-    { icon: '📐', color: '#8b5cf6', title: 'Enterprise Architecture owns Principles', desc: 'Architecture principles, data governance framework, security and privacy requirements apply across both platforms.' },
-    { icon: '⚡', color: '#f59e0b', title: 'Two tempos, one platform', desc: 'The data platform serves both analytics (batch, dashboards) and operational (streaming, real-time personalisation) needs.' },
-    { icon: '🔗', color: '#06b6d4', title: 'Interoperation, not merger', desc: 'Data flows between platforms via well-defined contracts. The integration platform feeds data into the data platform and distributes data products outward.' },
-    { icon: '⚠️', color: '#ef4444', title: 'Integration tech is TBD', desc: 'The integration platform technology stack is under active evaluation. This is a deliberate choice — we want to get it right, not just pick something fast.' },
+    { icon: '\uD83C\uDFDB\uFE0F', color: '#10b981', title: 'Data domain owns the data platform', desc: 'Master data, common ontology, data products catalog, medallion architecture, and platform standards. Spokes (other domains) own their domain data products within this platform.' },
+    { icon: '\uD83D\uDD27', color: '#3b82f6', title: 'Tech Enabling owns infrastructure', desc: 'Integration platform (API gateway, event bus), developer platforms (CI/CD, containers), observability, and security. Integration tech stack is under active evaluation.' },
+    { icon: '\uD83D\uDCD0', color: '#8b5cf6', title: 'Enterprise Architecture sets standards', desc: 'Architecture principles, data governance framework, security and privacy requirements apply across both platforms and all domains.' },
+    { icon: '\u26A1', color: '#f59e0b', title: 'Two tempos, one data platform', desc: 'The data platform serves both analytics (batch, dashboards) and operational (streaming, real-time personalisation) needs from a single lakehouse.' },
+    { icon: '\uD83D\uDD17', color: '#ec4899', title: 'Other domains consume & produce', desc: 'Non-platform domains (Content, Ads, Viewer, etc.) are both consumers and producers. They own their domain data products and use shared integration to connect systems.' },
+    { icon: '\u26A0\uFE0F', color: '#ef4444', title: 'Integration tech is TBD', desc: 'The integration platform technology stack is under active evaluation. This is a deliberate choice — we want to get it right, not just pick something fast.' },
   ],
 }
 
 const PLATFORM_PAGE_DA = {
   label: 'WORK IN PROGRESS',
   title: 'Dataplatform & Integrationsplatform',
-  subtitle: 'To distinkte platforme der arbejder sammen. Dataplatformen gemmer, transformerer og serverer data. Integrationsplatformen forbinder systemer. De er arkitektonisk adskilte med forskellige ejere, teknologier og formål.',
+  subtitle: 'To distinkte platforme ejet af to domæner i Hub. Data-domænet ejer dataplatformen (lagring, transformation, servering). Tech Enabling-domænet ejer integrationsplatformen og udviklerinfrastruktur. Enterprise Architecture sætter principper på tværs. Andre domæner er forbrugere og producenter.',
 
-  principlesBar: 'ARKITEKTURPRINCIPPER · DATA GOVERNANCE · SIKKERHED & PRIVATLIV',
-  principlesOwner: 'Ejet af Enterprise Architecture',
+  // Domain 4: Enterprise Architecture (top banner)
+  eaDomainTitle: 'ENTERPRISE ARCHITECTURE',
+  eaDomainDesc: 'Arkitekturprincipper · Data governance · Sikkerhed & privatliv',
+  eaDomainLabel: 'Domæne 4 — sætter standarder på tværs af alle platforme',
 
-  dataPlatformTitle: 'Dataplatform',
-  dataPlatformTech: 'Databricks · lakehouse-arkitektur',
+  // Domain 2: Data (left side)
+  dataDomainTitle: 'Dataplatform',
+  dataDomainTech: 'Databricks · lakehouse-arkitektur',
+  dataDomainLabel: 'DOMÆNE 2 — DATA (DATA FOUNDATION)',
 
   hubTitle: 'Hub — Data Foundation',
   hubDesc: 'Stamdata, ontologi, fælles datamodeller, dataprodukter',
-  hubOwner: 'Ejer: Data Foundation-domænet',
+  hubOwner: 'Ejer: Data-domænet (Data Foundation)',
   hubTech: 'Databricks Unity Catalog · Delta Lake · dbt',
   hubTech2: 'Medallion-arkitektur (bronze / silver / gold)',
 
@@ -1094,7 +1111,7 @@ const PLATFORM_PAGE_DA = {
   analyticsDesc: 'Batch-processering · historisk analyse',
   analyticsTech: 'Power BI · Excel · Databricks SQL',
   analyticsTech2: 'Dashboards · rapporter · ad-hoc forespørgsler',
-  analyticsConsumers: 'Alle personas bruger analytics',
+  analyticsConsumers: 'Alle domæner bruger analytics',
 
   operationalTempo: 'Operationelt Tempo',
   operationalDesc: 'Streaming · nær-realtid · personalisering',
@@ -1102,53 +1119,62 @@ const PLATFORM_PAGE_DA = {
   operationalTech2: 'Adobe Experience Platform · realtidsbeslutninger',
   operationalConsumers: 'Driver personalisering & seeroplevelse',
 
-  spokesTitle: 'Spoke-teams — Domæne-ejede Dataprodukter',
-  spokesDesc: 'Hver spoke bygger og ejer deres egne dataprodukter efter hub-standarder',
-  spokeExamples: ['Content & Redaktion', 'Ads & Revenue', 'Seer & Abonnement'],
-  spokesOwner: 'Spokes ejer deres data — Hub ejer platformen & standarderne',
+  // Domain 1: Tech Enabling (right side)
+  techDomainTitle: 'Tech Enabling Platform',
+  techDomainDesc: 'Infrastruktur · integration · udviklerplatforme',
+  techDomainLabel: 'DOMÆNE 1 — TECH ENABLING',
 
   integrationPlatformTitle: 'Integrationsplatform',
-  integrationPlatformTech: 'Teknologi: TBD (under evaluering)',
-
   apiGatewayTitle: 'API Gateway',
-  apiGatewayDesc: 'System-til-system kommunikation',
   apiGatewayDesc2: 'REST, GraphQL, service mesh',
-  apiGatewayTech: '⚠️ Teknologi TBD',
-
+  apiGatewayTech: '\u26A0\uFE0F Teknologi TBD',
   eventBusTitle: 'Event Bus',
-  eventBusDesc: 'Asynkron event-drevet arkitektur',
   eventBusDesc2: 'Pub/sub, event streaming, CDC',
-  eventBusTech: '⚠️ Teknologi TBD',
-
-  intCapTitle: 'Integrationskapabiliteter',
+  eventBusTech: '\u26A0\uFE0F Teknologi TBD',
   intCapDesc: 'Dataindtag · CDC · API-styring · event-routing',
-  intCapDesc2: 'Forbinder kildesystemer til dataplatformen og mellem applikationer',
 
-  techEnablingTitle: 'Tech Enabling-domænet',
-  techEnablingDesc: 'Ejer og driver integrationsplatformen — tooling, standarder og support',
+  devPlatTitle: 'Udviklerplatforme',
+  devPlatDesc: 'CI/CD · containerplatforme · IaC',
+  devPlatTech: 'GitHub · ArgoCD · Kubernetes',
+  devPlatTech2: 'Delte toolchains & golden paths',
 
-  productTeamsTitle: 'Produktteams (Forbrugere & Producenter)',
-  productTeamsDesc: 'Produktteams bruger integrationsplatformen til at forbinde deres systemer',
-  productTeamsExamples: 'TV 2 Play · Nyheder · Sport · Annoncer · Abonnementer',
+  obsSecTitle: 'Observability & Sikkerhed',
+  obsSecDesc: 'Monitoring · logging · alerting · IAM',
+  obsSecTech: 'Datadog / Grafana · Vault · SSO',
+  obsSecTech2: 'Synlighed & compliance på tværs',
 
-  flowLabel: 'DATAFLOW',
+  // Domain 3: Other Domains (consumers in both platforms)
+  otherDomainsTitle: 'Andre domæner (Dataforbrugere & -producenter)',
+  otherDomainsDesc: 'Bygger og ejer domæne-dataprodukter efter hub-standarder',
+  otherDomainsExamples: ['Content & Redaktion', 'Ads & Revenue', 'Seer & Abonnement'],
+
+  otherDomainsIntTitle: 'Andre domæner (Integrationsforbrugere)',
+  otherDomainsIntDesc: 'Bruger integrationsplatformen til at forbinde systemer og udveksle data',
+  otherDomainsIntExamples: 'TV 2 Play · Nyheder · Sport · Annoncer · Abonnementer',
+
+  // Arrows
+  flowLabelOut: 'data ud',
+  flowLabelIn: 'data ind',
   flowToSpokes: 'indlæst data',
+
+  // Callout
   notSameWarning: 'Det er IKKE den samme platform',
   notSameDesc: 'Forskellige ejere · Forskellig teknologi · Forskelligt formål · Arkitektonisk adskilte',
 
-  legendData: 'Dataplatform (Databricks)',
-  legendIntegration: 'Integrationsplatform (TBD)',
-  legendPrinciples: 'Enterprise Architecture',
-  legendFlow: 'Dataflow / interop',
-  legendTbd: 'Teknologi uafklaret',
+  // Legend
+  legendTitle: 'DOMÆNER',
+  legendData: 'Data (Data Foundation)',
+  legendTech: 'Tech Enabling',
+  legendOther: 'Andre domæner',
+  legendEA: 'Enterprise Architecture',
 
   cards: [
-    { icon: '🏛️', color: '#10b981', title: 'Data Foundation ejer Hub\'en', desc: 'Stamdata, fælles ontologi, dataproduktkatalog og platformstandarder. Men ikke hele dataplatformen — spokes ejer deres domænedata.' },
-    { icon: '🔧', color: '#3b82f6', title: 'Tech Enabling ejer Integration', desc: 'Integrationsplatformen er et separat ansvar — API gateway, event bus, systemforbindelser. Teknologistakken er under evaluering.' },
-    { icon: '📐', color: '#8b5cf6', title: 'Enterprise Architecture ejer Principper', desc: 'Arkitekturprincipper, data governance-framework, sikkerheds- og privatlivskrav gælder på tværs af begge platforme.' },
-    { icon: '⚡', color: '#f59e0b', title: 'To tempi, én platform', desc: 'Dataplatformen betjener både analytics (batch, dashboards) og operationelle (streaming, realtidspersonalisering) behov.' },
-    { icon: '🔗', color: '#06b6d4', title: 'Samspil, ikke sammenlægning', desc: 'Data flyder mellem platformene via veldefinerede kontrakter. Integrationsplatformen fører data ind i dataplatformen og distribuerer dataprodukter udad.' },
-    { icon: '⚠️', color: '#ef4444', title: 'Integrationsteknologi er TBD', desc: 'Integrationsplatformens teknologistak er under aktiv evaluering. Det er et bevidst valg — vi vil gøre det rigtigt, ikke bare vælge noget hurtigt.' },
+    { icon: '\uD83C\uDFDB\uFE0F', color: '#10b981', title: 'Data-domænet ejer dataplatformen', desc: 'Stamdata, fælles ontologi, dataproduktkatalog, medallion-arkitektur og platformstandarder. Spokes (andre domæner) ejer deres domæne-dataprodukter inden for denne platform.' },
+    { icon: '\uD83D\uDD27', color: '#3b82f6', title: 'Tech Enabling ejer infrastruktur', desc: 'Integrationsplatform (API gateway, event bus), udviklerplatforme (CI/CD, containere), observability og sikkerhed. Integrationsteknologi er under aktiv evaluering.' },
+    { icon: '\uD83D\uDCD0', color: '#8b5cf6', title: 'Enterprise Architecture sætter standarder', desc: 'Arkitekturprincipper, data governance-framework, sikkerheds- og privatlivskrav gælder på tværs af begge platforme og alle domæner.' },
+    { icon: '\u26A1', color: '#f59e0b', title: 'To tempi, én dataplatform', desc: 'Dataplatformen betjener både analytics (batch, dashboards) og operationelle (streaming, realtidspersonalisering) behov fra ét samlet lakehouse.' },
+    { icon: '\uD83D\uDD17', color: '#ec4899', title: 'Andre domæner forbruger & producerer', desc: 'Ikke-platform-domæner (Content, Ads, Seer osv.) er både forbrugere og producenter. De ejer deres domæne-dataprodukter og bruger delt integration til at forbinde systemer.' },
+    { icon: '\u26A0\uFE0F', color: '#ef4444', title: 'Integrationsteknologi er TBD', desc: 'Integrationsplatformens teknologistak er under aktiv evaluering. Det er et bevidst valg — vi vil gøre det rigtigt, ikke bare vælge noget hurtigt.' },
   ],
 }
 

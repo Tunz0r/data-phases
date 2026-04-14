@@ -416,7 +416,7 @@ function PlatformPage() {
 
       {/* SVG Architecture Diagram */}
       <div className="platform-diagram" onClick={e => e.stopPropagation()}>
-        <svg viewBox="0 0 1000 620" className="platform-svg">
+        <svg viewBox="0 0 1000 640" className="platform-svg">
           <defs>
             <linearGradient id="dataPlatGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#10b981" stopOpacity="0.08" />
@@ -430,215 +430,226 @@ function PlatformPage() {
               <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.06" />
               <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.02" />
             </linearGradient>
+            <marker id="arrowR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <path d="M0,0 L10,3.5 L0,7" fill="none" stroke="#06b6d4" strokeWidth="1.5" />
+            </marker>
+            <marker id="arrowL" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
+              <path d="M10,0 L0,3.5 L10,7" fill="none" stroke="#06b6d4" strokeWidth="1.5" />
+            </marker>
           </defs>
 
-          {/* Principles layer — spans across both platforms */}
-          <rect x="30" y="16" width="940" height="52" rx="10" fill="url(#principlesGrad)" stroke="#8b5cf680" strokeWidth="1" strokeDasharray="6,3" />
-          <text x="500" y="38" textAnchor="middle" fontSize="10" fontWeight="700" fill="#8b5cf6" letterSpacing="2" fontFamily="var(--sans)">
-            {pp.principlesBar}
+          {/* ═══ DOMAIN 4: ENTERPRISE ARCHITECTURE — spans top ═══ */}
+          <rect x="30" y="12" width="940" height="56" rx="10" fill="url(#principlesGrad)" stroke="#8b5cf680" strokeWidth="1" strokeDasharray="6,3" />
+          <text x="500" y="34" textAnchor="middle" fontSize="11" fontWeight="700" fill="#8b5cf6" letterSpacing="2" fontFamily="var(--sans)">
+            {pp.eaDomainTitle}
           </text>
-          <text x="500" y="54" textAnchor="middle" fontSize="8.5" fill="#8b5cf680" fontFamily="var(--sans)">
-            {pp.principlesOwner}
+          <text x="500" y="50" textAnchor="middle" fontSize="8.5" fill="#8b5cf680" fontFamily="var(--sans)">
+            {pp.eaDomainDesc}
           </text>
-
-          {/* ═══ DATA PLATFORM (left side) ═══ */}
-          <rect x="30" y="80" width="470" height="400" rx="12" fill="url(#dataPlatGrad)" stroke="#10b981" strokeWidth="1.5" />
-          <text x="265" y="105" textAnchor="middle" fontSize="14" fontWeight="700" fill="#10b981" fontFamily="var(--sans)">
-            {pp.dataPlatformTitle}
-          </text>
-          <text x="265" y="121" textAnchor="middle" fontSize="9" fill="#10b98180" fontFamily="var(--sans)">
-            {pp.dataPlatformTech}
+          <text x="500" y="62" textAnchor="middle" fontSize="7.5" fontWeight="600" fill="#8b5cf650" fontFamily="var(--sans)">
+            {pp.eaDomainLabel}
           </text>
 
-          {/* Hub (Data Foundation) */}
-          <rect x="130" y="140" width="270" height="100" rx="10" fill="#10b98112" stroke="#10b981" strokeWidth="1.5" />
-          <text x="265" y="165" textAnchor="middle" fontSize="12" fontWeight="700" fill="#10b981" fontFamily="var(--sans)">
-            🏛️ {pp.hubTitle}
+          {/* ═══ DOMAIN 2: DATA (left side) ═══ */}
+          <rect x="30" y="80" width="460" height="420" rx="12" fill="url(#dataPlatGrad)" stroke="#10b981" strokeWidth="1.5" />
+          <text x="260" y="104" textAnchor="middle" fontSize="13" fontWeight="700" fill="#10b981" fontFamily="var(--sans)">
+            {pp.dataDomainTitle}
           </text>
-          <text x="265" y="182" textAnchor="middle" fontSize="9.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+          <text x="260" y="119" textAnchor="middle" fontSize="9" fill="#10b98180" fontFamily="var(--sans)">
+            {pp.dataDomainTech}
+          </text>
+
+          {/* Hub (core of data domain) */}
+          <rect x="55" y="135" width="410" height="85" rx="10" fill="#10b98112" stroke="#10b981" strokeWidth="1.5" />
+          <text x="260" y="157" textAnchor="middle" fontSize="11" fontWeight="700" fill="#10b981" fontFamily="var(--sans)">
+            {pp.hubTitle}
+          </text>
+          <text x="260" y="172" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
             {pp.hubDesc}
           </text>
-          <text x="265" y="197" textAnchor="middle" fontSize="8.5" fontWeight="600" fill="#10b981" fontFamily="var(--sans)">
-            {pp.hubOwner}
-          </text>
-          <text x="265" y="212" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
+          <text x="260" y="187" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
             {pp.hubTech}
           </text>
-          <text x="265" y="228" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
+          <text x="260" y="200" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
             {pp.hubTech2}
+          </text>
+          <text x="260" y="215" textAnchor="middle" fontSize="7.5" fontWeight="600" fill="#10b98180" fontFamily="var(--sans)">
+            {pp.hubOwner}
           </text>
 
           {/* Analytics Tempo */}
-          <rect x="55" y="260" width="195" height="95" rx="8" fill="#3b82f608" stroke="#3b82f640" strokeWidth="1" />
-          <text x="152" y="282" textAnchor="middle" fontSize="10" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
-            📊 {pp.analyticsTempo}
+          <rect x="55" y="235" width="195" height="85" rx="8" fill="#3b82f608" stroke="#3b82f640" strokeWidth="1" />
+          <text x="152" y="255" textAnchor="middle" fontSize="10" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
+            {pp.analyticsTempo}
           </text>
-          <text x="152" y="297" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+          <text x="152" y="270" textAnchor="middle" fontSize="8" fill="var(--text-secondary)" fontFamily="var(--sans)">
             {pp.analyticsDesc}
           </text>
-          <text x="152" y="312" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
+          <text x="152" y="283" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
             {pp.analyticsTech}
           </text>
-          <text x="152" y="327" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
+          <text x="152" y="296" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
             {pp.analyticsTech2}
           </text>
-          <text x="152" y="345" textAnchor="middle" fontSize="7.5" fontWeight="600" fill="#3b82f680" fontFamily="var(--sans)">
+          <text x="152" y="313" textAnchor="middle" fontSize="7" fontWeight="600" fill="#3b82f660" fontFamily="var(--sans)">
             {pp.analyticsConsumers}
           </text>
 
           {/* Operational Tempo */}
-          <rect x="270" y="260" width="210" height="95" rx="8" fill="#f59e0b08" stroke="#f59e0b40" strokeWidth="1" strokeDasharray="6,3" />
-          <text x="375" y="282" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f59e0b" fontFamily="var(--sans)">
-            ⚡ {pp.operationalTempo}
+          <rect x="270" y="235" width="195" height="85" rx="8" fill="#f59e0b08" stroke="#f59e0b40" strokeWidth="1" strokeDasharray="6,3" />
+          <text x="367" y="255" textAnchor="middle" fontSize="10" fontWeight="700" fill="#f59e0b" fontFamily="var(--sans)">
+            {pp.operationalTempo}
           </text>
-          <text x="375" y="297" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+          <text x="367" y="270" textAnchor="middle" fontSize="8" fill="var(--text-secondary)" fontFamily="var(--sans)">
             {pp.operationalDesc}
           </text>
-          <text x="375" y="312" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
+          <text x="367" y="283" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
             {pp.operationalTech}
           </text>
-          <text x="375" y="327" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
+          <text x="367" y="296" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
             {pp.operationalTech2}
           </text>
-          <text x="375" y="345" textAnchor="middle" fontSize="7.5" fontWeight="600" fill="#f59e0b80" fontFamily="var(--sans)">
+          <text x="367" y="313" textAnchor="middle" fontSize="7" fontWeight="600" fill="#f59e0b60" fontFamily="var(--sans)">
             {pp.operationalConsumers}
           </text>
 
-          {/* Spoke teams in data platform */}
-          <rect x="55" y="375" width="420" height="90" rx="8" fill="#ffffff04" stroke="#ffffff15" strokeWidth="1" />
-          <text x="265" y="397" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text-primary)" fontFamily="var(--sans)">
-            {pp.spokesTitle}
+          {/* ═══ DOMAIN 3: OTHER DOMAINS — inside data platform ═══ */}
+          <rect x="55" y="335" width="410" height="75" rx="8" fill="#ec489908" stroke="#ec489930" strokeWidth="1" />
+          <text x="260" y="356" textAnchor="middle" fontSize="10" fontWeight="700" fill="#ec4899" fontFamily="var(--sans)">
+            {pp.otherDomainsTitle}
           </text>
-          <text x="265" y="414" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
-            {pp.spokesDesc}
+          <text x="260" y="372" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+            {pp.otherDomainsDesc}
           </text>
-          {pp.spokeExamples.map((ex, i) => (
-            <text key={i} x={85 + i * 130} y="440" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
+          {pp.otherDomainsExamples.map((ex, i) => (
+            <text key={i} x={110 + i * 120} y="396" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
               {ex}
             </text>
           ))}
-          <text x="265" y="457" textAnchor="middle" fontSize="7.5" fontWeight="600" fill="#ffffff40" fontFamily="var(--sans)">
-            {pp.spokesOwner}
+
+          {/* Domain 2 label */}
+          <text x="260" y="490" textAnchor="middle" fontSize="8" fontWeight="700" fill="#10b98160" letterSpacing="1.5" fontFamily="var(--sans)">
+            {pp.dataDomainLabel}
           </text>
 
-          {/* ═══ INTEGRATION PLATFORM (right side) ═══ */}
-          <rect x="530" y="80" width="440" height="400" rx="12" fill="url(#intPlatGrad)" stroke="#3b82f6" strokeWidth="1.5" />
-          <text x="750" y="105" textAnchor="middle" fontSize="14" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
+          {/* ═══ DOMAIN 1: TECH ENABLING (right side) ═══ */}
+          <rect x="520" y="80" width="450" height="420" rx="12" fill="url(#intPlatGrad)" stroke="#3b82f6" strokeWidth="1.5" />
+          <text x="745" y="104" textAnchor="middle" fontSize="13" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
+            {pp.techDomainTitle}
+          </text>
+          <text x="745" y="119" textAnchor="middle" fontSize="9" fill="#3b82f680" fontFamily="var(--sans)">
+            {pp.techDomainDesc}
+          </text>
+
+          {/* Integration Platform */}
+          <rect x="545" y="135" width="400" height="85" rx="10" fill="#3b82f610" stroke="#3b82f650" strokeWidth="1" />
+          <text x="745" y="155" textAnchor="middle" fontSize="11" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
             {pp.integrationPlatformTitle}
           </text>
-          <text x="750" y="121" textAnchor="middle" fontSize="9" fill="#3b82f680" fontFamily="var(--sans)">
-            {pp.integrationPlatformTech}
+          <text x="645" y="172" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+            {pp.apiGatewayTitle}: {pp.apiGatewayDesc2}
           </text>
-
-          {/* API Gateway / Event Bus */}
-          <rect x="555" y="140" width="195" height="90" rx="8" fill="#3b82f610" stroke="#3b82f650" strokeWidth="1" />
-          <text x="652" y="164" textAnchor="middle" fontSize="10" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
-            🔌 {pp.apiGatewayTitle}
-          </text>
-          <text x="652" y="180" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
-            {pp.apiGatewayDesc}
-          </text>
-          <text x="652" y="195" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
-            {pp.apiGatewayDesc2}
-          </text>
-          <text x="652" y="218" textAnchor="middle" fontSize="8" fontWeight="600" fill="#f59e0b" fontFamily="var(--sans)">
+          <text x="645" y="186" textAnchor="middle" fontSize="8" fontWeight="600" fill="#f59e0b" fontFamily="var(--sans)">
             {pp.apiGatewayTech}
           </text>
-
-          {/* Event / Message Bus */}
-          <rect x="770" y="140" width="180" height="90" rx="8" fill="#3b82f610" stroke="#3b82f650" strokeWidth="1" />
-          <text x="860" y="164" textAnchor="middle" fontSize="10" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
-            📡 {pp.eventBusTitle}
+          <text x="870" y="172" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+            {pp.eventBusTitle}: {pp.eventBusDesc2}
           </text>
-          <text x="860" y="180" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
-            {pp.eventBusDesc}
-          </text>
-          <text x="860" y="195" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
-            {pp.eventBusDesc2}
-          </text>
-          <text x="860" y="218" textAnchor="middle" fontSize="8" fontWeight="600" fill="#f59e0b" fontFamily="var(--sans)">
+          <text x="870" y="186" textAnchor="middle" fontSize="8" fontWeight="600" fill="#f59e0b" fontFamily="var(--sans)">
             {pp.eventBusTech}
           </text>
-
-          {/* Integration Capabilities */}
-          <rect x="555" y="250" width="395" height="75" rx="8" fill="#ffffff04" stroke="#ffffff15" strokeWidth="1" />
-          <text x="752" y="273" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--text-primary)" fontFamily="var(--sans)">
-            {pp.intCapTitle}
-          </text>
-          <text x="752" y="290" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+          <text x="745" y="210" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
             {pp.intCapDesc}
           </text>
-          <text x="752" y="307" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
-            {pp.intCapDesc2}
+
+          {/* Dev Platforms */}
+          <rect x="545" y="235" width="195" height="85" rx="8" fill="#3b82f608" stroke="#3b82f630" strokeWidth="1" />
+          <text x="642" y="255" textAnchor="middle" fontSize="10" fontWeight="700" fill="#3b82f6" fontFamily="var(--sans)">
+            {pp.devPlatTitle}
+          </text>
+          <text x="642" y="270" textAnchor="middle" fontSize="8" fill="var(--text-secondary)" fontFamily="var(--sans)">
+            {pp.devPlatDesc}
+          </text>
+          <text x="642" y="283" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
+            {pp.devPlatTech}
+          </text>
+          <text x="642" y="296" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
+            {pp.devPlatTech2}
           </text>
 
-          {/* Tech Enabling ownership */}
-          <rect x="555" y="340" width="395" height="50" rx="8" fill="#06b6d408" stroke="#06b6d440" strokeWidth="1" />
-          <text x="752" y="362" textAnchor="middle" fontSize="10" fontWeight="700" fill="#06b6d4" fontFamily="var(--sans)">
-            🔧 {pp.techEnablingTitle}
+          {/* Observability & Security */}
+          <rect x="750" y="235" width="195" height="85" rx="8" fill="#06b6d408" stroke="#06b6d430" strokeWidth="1" />
+          <text x="847" y="255" textAnchor="middle" fontSize="10" fontWeight="700" fill="#06b6d4" fontFamily="var(--sans)">
+            {pp.obsSecTitle}
           </text>
-          <text x="752" y="378" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
-            {pp.techEnablingDesc}
+          <text x="847" y="270" textAnchor="middle" fontSize="8" fill="var(--text-secondary)" fontFamily="var(--sans)">
+            {pp.obsSecDesc}
           </text>
-
-          {/* Product teams as consumers */}
-          <rect x="555" y="405" width="395" height="60" rx="8" fill="#ec489908" stroke="#ec489940" strokeWidth="1" />
-          <text x="752" y="427" textAnchor="middle" fontSize="10" fontWeight="700" fill="#ec4899" fontFamily="var(--sans)">
-            👥 {pp.productTeamsTitle}
+          <text x="847" y="283" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
+            {pp.obsSecTech}
           </text>
-          <text x="752" y="443" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
-            {pp.productTeamsDesc}
-          </text>
-          <text x="752" y="458" textAnchor="middle" fontSize="8" fill="var(--text-muted)" fontFamily="var(--sans)">
-            {pp.productTeamsExamples}
+          <text x="847" y="296" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
+            {pp.obsSecTech2}
           </text>
 
-          {/* ═══ INTEROP ARROWS ═══ */}
-          {/* Arrow: Data Platform → Integration Platform */}
-          <defs>
-            <marker id="arrowRight" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-              <path d="M0,0 L8,3 L0,6" fill="#06b6d4" />
-            </marker>
-            <marker id="arrowLeft" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
-              <path d="M8,0 L0,3 L8,6" fill="#06b6d4" />
-            </marker>
-          </defs>
-
-          {/* Bidirectional flow arrows */}
-          <line x1="500" y1="190" x2="545" y2="190" stroke="#06b6d4" strokeWidth="2" markerEnd="url(#arrowRight)" />
-          <line x1="545" y1="205" x2="500" y2="205" stroke="#06b6d4" strokeWidth="2" markerEnd="url(#arrowLeft)" />
-          <text x="522" y="178" textAnchor="middle" fontSize="7.5" fill="#06b6d4" fontWeight="600" fontFamily="var(--sans)">
-            {pp.flowLabel}
+          {/* Domain 3 consumers on integration side */}
+          <rect x="545" y="335" width="400" height="75" rx="8" fill="#ec489908" stroke="#ec489930" strokeWidth="1" />
+          <text x="745" y="356" textAnchor="middle" fontSize="10" fontWeight="700" fill="#ec4899" fontFamily="var(--sans)">
+            {pp.otherDomainsIntTitle}
+          </text>
+          <text x="745" y="372" textAnchor="middle" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">
+            {pp.otherDomainsIntDesc}
+          </text>
+          <text x="745" y="396" textAnchor="middle" fontSize="7.5" fill="var(--text-muted)" fontFamily="var(--sans)">
+            {pp.otherDomainsIntExamples}
           </text>
 
-          {/* Flow from integration to data spokes */}
-          <line x1="545" y1="310" x2="500" y2="395" stroke="#06b6d450" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#arrowLeft)" />
-          <text x="535" y="348" textAnchor="end" fontSize="7" fill="#06b6d460" fontFamily="var(--sans)">
+          {/* Domain 1 label */}
+          <text x="745" y="490" textAnchor="middle" fontSize="8" fontWeight="700" fill="#3b82f660" letterSpacing="1.5" fontFamily="var(--sans)">
+            {pp.techDomainLabel}
+          </text>
+
+          {/* ═══ INTEROP ARROWS — clean curved paths ═══ */}
+          {/* Top arrow: Data → Integration */}
+          <path d="M490,170 C508,170 508,170 530,170" fill="none" stroke="#06b6d4" strokeWidth="2" markerEnd="url(#arrowR)" />
+          <text x="510" y="163" textAnchor="middle" fontSize="7.5" fill="#06b6d4" fontWeight="600" fontFamily="var(--sans)">
+            {pp.flowLabelOut}
+          </text>
+          {/* Bottom arrow: Integration → Data */}
+          <path d="M530,195 C508,195 508,195 490,195" fill="none" stroke="#06b6d4" strokeWidth="2" markerEnd="url(#arrowL)" />
+          <text x="510" y="210" textAnchor="middle" fontSize="7.5" fill="#06b6d4" fontWeight="600" fontFamily="var(--sans)">
+            {pp.flowLabelIn}
+          </text>
+
+          {/* Middle arrow: Integration feeds domain data products */}
+          <path d="M540,370 L495,370" fill="none" stroke="#06b6d450" strokeWidth="1.5" strokeDasharray="5,3" markerEnd="url(#arrowL)" />
+          <text x="518" y="364" textAnchor="middle" fontSize="7" fill="#06b6d460" fontFamily="var(--sans)">
             {pp.flowToSpokes}
           </text>
 
           {/* ═══ NOT THE SAME callout ═══ */}
-          <rect x="350" y="500" width="300" height="40" rx="8" fill="#ef444410" stroke="#ef444440" strokeWidth="1.5" />
-          <text x="500" y="518" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ef4444" fontFamily="var(--sans)">
-            ⚠️ {pp.notSameWarning}
+          <rect x="320" y="510" width="360" height="40" rx="8" fill="#ef444410" stroke="#ef444440" strokeWidth="1.5" />
+          <text x="500" y="528" textAnchor="middle" fontSize="11" fontWeight="700" fill="#ef4444" fontFamily="var(--sans)">
+            {pp.notSameWarning}
           </text>
-          <text x="500" y="533" textAnchor="middle" fontSize="8.5" fill="#ef444490" fontFamily="var(--sans)">
+          <text x="500" y="543" textAnchor="middle" fontSize="8.5" fill="#ef444490" fontFamily="var(--sans)">
             {pp.notSameDesc}
           </text>
 
-          {/* ═══ LEGEND ═══ */}
-          <g transform="translate(30, 560)">
-            <rect width="940" height="45" rx="8" fill="#ffffff04" stroke="#ffffff10" strokeWidth="1" />
-            <circle cx="30" cy="22" r="5" fill="#10b981" />
-            <text x="42" y="26" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendData}</text>
-            <circle cx="220" cy="22" r="5" fill="#3b82f6" />
-            <text x="232" y="26" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendIntegration}</text>
-            <circle cx="440" cy="22" r="5" fill="#8b5cf6" />
-            <text x="452" y="26" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendPrinciples}</text>
-            <circle cx="660" cy="22" r="5" fill="#06b6d4" />
-            <text x="672" y="26" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendFlow}</text>
-            <circle cx="830" cy="22" r="5" fill="#f59e0b" />
-            <text x="842" y="26" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendTbd}</text>
+          {/* ═══ LEGEND — 4 domains ═══ */}
+          <g transform="translate(30, 570)">
+            <rect width="940" height="50" rx="8" fill="#ffffff04" stroke="#ffffff10" strokeWidth="1" />
+            <text x="470" y="14" textAnchor="middle" fontSize="8" fontWeight="700" fill="#ffffff40" letterSpacing="1.5" fontFamily="var(--sans)">
+              {pp.legendTitle}
+            </text>
+            <circle cx="80" cy="35" r="5" fill="#10b981" />
+            <text x="92" y="39" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendData}</text>
+            <circle cx="300" cy="35" r="5" fill="#3b82f6" />
+            <text x="312" y="39" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendTech}</text>
+            <circle cx="530" cy="35" r="5" fill="#ec4899" />
+            <text x="542" y="39" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendOther}</text>
+            <circle cx="740" cy="35" r="5" fill="#8b5cf6" />
+            <text x="752" y="39" fontSize="8.5" fill="var(--text-secondary)" fontFamily="var(--sans)">{pp.legendEA}</text>
           </g>
         </svg>
       </div>
